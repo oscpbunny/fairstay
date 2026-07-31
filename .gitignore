@@ -1,0 +1,10 @@
+# System files
+Thumbs.db
+.DS_Store
+*.swp
+
+# Keep the setup instructions out of the public site
+setup-google-sheet.txt
+
+# Note: The duplicate index (1).html is kept locally for reference
+# but index.html is used for the live site

@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FairStay | Rental Agreement Details</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #18312b;
+            background: #f7faf8
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background: #fff
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: #116b4c
+        }
+
+        .logo span {
+            color: #e3a52d
+        }
+
+        nav a {
+            color: #314b44;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 14px
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.25
+            }
+        }
+
+        .quote {
+            display: block;
+            text-align: center;
+            background: linear-gradient(90deg, #116b4c, #0b8a63, #e3a52d);
+            color: #fff;
+            padding: 13px 20px;
+            font-weight: 700;
+            font-size: 17px;
+            letter-spacing: 0.4px;
+            box-shadow: 0 4px 18px rgba(22, 107, 76, 0.35)
+        }
+
+        .quote span {
+            animation: blink 1.2s infinite
+        }
+
+        .page-header {
+            padding: 40px 7% 20px;
+            background: linear-gradient(135deg, #e8f6ef, #fff5df)
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            margin: 0 0 8px;
+            color: #116b4c
+        }
+
+        .page-header p {
+            color: #536b64;
+            font-size: 16px;
+            margin: 0
+        }
+
+        .customer-info {
+            margin: 25px 7% 0;
+            background: #fff;
+            border-radius: 14px;
+            padding: 20px 25px;
+            box-shadow: 0 8px 25px #1b43320d;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px
+        }
+
+        .customer-info .ci-item {
+            font-size: 14px
+        }
+
+        .customer-info .ci-item b {
+            color: #116b4c
+        }
+
+        .customer-id-badge {
+            display: inline-block;
+            background: #116b4c;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 5px
+        }
+
+        .form-wrap {
+            padding: 30px 7% 60px
+        }
+
+        .form-section {
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px #1b43320d
+        }
+
+        .form-section h3 {
+            color: #116b4c;
+            margin-top: 0;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #e3a52d;
+            margin-bottom: 22px;
+            font-size: 22px
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        .form-grid.full {
+            grid-column: 1 / -1
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #314b44
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 11px;
+            border: 1px solid #bad5cb;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+            background: #fff
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #116b4c;
+            box-shadow: 0 0 0 2px rgba(17, 107, 76, 0.15)
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 70px
+        }
+
+        .deposit-box {
+            background: #f4f8f6;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 5px;
+            grid-column: 1 / -1
+        }
+
+        .deposit-box h4 {
+            margin: 0 0 15px;
+            color: #116b4c;
+            font-size: 16px
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            background: #116b4c;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 10px
+        }
+
+        .submit-btn:hover {
+            background: #0b8a63
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed
+        }
+
+        .success-box {
+            text-align: center;
+            background: #fff;
+            border-radius: 18px;
+            padding: 50px 30px;
+            margin: 30px 7%;
+            box-shadow: 0 8px 25px #1b43320d
+        }
+
+        .success-box h2 {
+            color: #116b4c;
+            margin-top: 0
+        }
+
+        .success-box a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            background: #116b4c;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700
+        }
+
+        footer {
+            background: #0b2d25;
+            color: #c7d8d3;
+            padding: 35px 7%;
+            display: flex;
+            justify-content: space-between
+        }
+
+        @media(max-width:760px) {
+            .form-grid {
+                grid-template-columns: 1fr
+            }
+
+            .amenities-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            nav .links {
+                display: none
+            }
+
+            footer {
+                display: block
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <nav>
+            <div class="logo">Fair<span>Stay</span></div>
+            <div class="links"><a href="index.html">Home</a><a href="index.html#agreements">Plans</a><a
+                    href="index.html#contact">Contact</a></div>
+        </nav>
+        <div class="quote"><span>💡 No payment required until finalization</span></div>
+    </div>
+
+    <div class="page-header">
+        <h1>Rental Agreement Details</h1>
+        <p>Please fill in the complete property, owner, tenant, contract and amenities details below.</p>
+    </div>
+
+    <div class="customer-info" id="customerInfo"></div>
+
+    <div class="form-wrap">
+        <form id="rentalForm" onsubmit="submitDetails(event)">
+            <!-- =================== PROPERTY DETAILS =================== -->
+            <div class="form-section">
+                <h3>🏠 Property Details</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Type of Property</label>
+                        <select name="property_type" required>
+                            <option value="">Select</option>
+                            <option>Flat</option>
+                            <option>Independent House</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" name="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label>BHK Type</label>
+                        <select name="bhk_type" required>
+                            <option value="">Select</option>
+                            <option>1 BHK</option>
+                            <option>2 BHK</option>
+                            <option>3 BHK</option>
+                            <option>4 BHK</option>
+                            <option>4+ BHK</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Flat Number / House Number</label>
+                        <input type="text" name="flat_house_no" required>
+                    </div>
+                    <div class="form-group full">
+                        <label>Property Address (Full)</label>
+                        <textarea name="property_address" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Flat / House Built Up Area (sq ft)</label>
+                        <input type="text" name="built_up_area" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Floor No</label>
+                        <input type="text" name="floor_no" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =================== OWNER DETAILS =================== -->
+            <div class="form-section">
+                <h3>👤 Owner Details</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="owner_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" name="owner_age" min="18" max="120" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select name="owner_gender" required>
+                            <option value="">Select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Aadhar Number (12 Digits)</label>
+                        <input type="text" name="owner_aadhar" pattern="[0-9]{12}" maxlength="12" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" name="owner_phone" required>
+                    </div>
+                    <div class="form-group full">
+                        <label>Permanent Address (Full)</label>
+                        <textarea name="owner_address" required></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =================== TENANT DETAILS =================== -->
+            <div class="form-section">
+                <h3>👥 Tenant Details</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="tenant_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" name="tenant_age" min="18" max="120" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select name="tenant_gender" required>
+                            <option value="">Select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Aadhar Number (12 Digits)</label>
+                        <input type="text" name="tenant_aadhar" pattern="[0-9]{12}" maxlength="12" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" name="tenant_phone" required>
+                    </div>
+                    <div class="form-group full">
+                        <label>Permanent Address (Full)</label>
+                        <textarea name="tenant_address" required></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =================== CONTRACT DETAILS =================== -->
+            <div class="form-section">
+                <h3>📋 Contract Details</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Agreement Duration</label>
+                        <input type="text" name="agreement_duration" placeholder="e.g. 11 months" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Agreement Start Date</label>
+                        <input type="date" name="agreement_start_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Rent Amount (₹)</label>
+                        <input type="number" name="rent_amount" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Refundable Deposit (₹)</label>
+                        <input type="number" name="refundable_deposit" min="0" required>
+                    </div>
+
+                    <!-- Deposit Payment Mode sub-section -->
+                    <div class="deposit-box">
+                        <h4>🏦 Deposit Payment Mode</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Bank Name</label>
+                                <input type="text" name="deposit_bank_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Branch Name</label>
+                                <input type="text" name="deposit_branch_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Transaction ID</label>
+                                <input type="text" name="deposit_transaction_id" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Transaction Date</label>
+                                <input type="date" name="deposit_transaction_date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Amount (₹)</label>
+                                <input type="number" name="deposit_amount" min="0" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Maintenance Amount (₹)</label>
+                        <input type="number" name="maintenance_amount" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Rent Day (of month)</label>
+                        <select name="rent_day" required>
+                            <option value="">Select</option>
+                            <option>1st</option>
+                            <option>2nd</option>
+                            <option>3rd</option>
+                            <option>4th</option>
+                            <option>5th</option>
+                            <option>6th</option>
+                            <option>7th</option>
+                            <option>8th</option>
+                            <option>9th</option>
+                            <option>10th</option>
+                            <option>11th</option>
+                            <option>12th</option>
+                            <option>13th</option>
+                            <option>14th</option>
+                            <option>15th</option>
+                            <option>16th</option>
+                            <option>17th</option>
+                            <option>18th</option>
+                            <option>19th</option>
+                            <option>20th</option>
+                            <option>21st</option>
+                            <option>22nd</option>
+                            <option>23rd</option>
+                            <option>24th</option>
+                            <option>25th</option>
+                            <option>26th</option>
+                            <option>27th</option>
+                            <option>28th</option>
+                            <option>29th</option>
+                            <option>30th</option>
+                            <option>31st</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Notice Period</label>
+                        <input type="text" name="notice_period" placeholder="e.g. 30 days" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Minimum Lock-in Period</label>
+                        <input type="text" name="lockin_period" placeholder="e.g. 6 months" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =================== AMENITIES DETAILS =================== -->
+            <div class="form-section">
+                <h3>🛋️ Amenities Details</h3>
+                <div class="amenities-grid">
+                    <div class="form-group">
+                        <label>Number of Beds</label>
+                        <input type="number" name="beds" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Fans</label>
+                        <input type="number" name="fans" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Tubes</label>
+                        <input type="number" name="tubes" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Sofas</label>
+                        <input type="number" name="sofas" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of ACs</label>
+                        <input type="number" name="acs" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Geysers</label>
+                        <input type="number" name="geysers" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Gas Geysers</label>
+                        <input type="number" name="gas_geysers" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Chairs</label>
+                        <input type="number" name="chairs" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Tables</label>
+                        <input type="number" name="tables" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Washing Machines</label>
+                        <input type="number" name="washing_machines" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Curtains</label>
+                        <input type="number" name="curtains" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Bulbs</label>
+                        <input type="number" name="bulbs" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Cupboards</label>
+                        <input type="number" name="cupboards" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Aircoolers</label>
+                        <input type="number" name="aircoolers" min="0" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Watercoolers</label>
+                        <input type="number" name="watercoolers" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Submit Rental Details</button>
+        </form>
+
+        <!-- Success message (hidden until form submitted) -->
+        <div id="successBox" class="success-box" style="display:none">
+            <h2>✅ Rental Details Submitted Successfully!</h2>
+            <p>Thank you! Your rental agreement details have been recorded.</p>
+            <p style="font-size:18px"><b>Your Customer ID: <span id="successCustomerId"></span></b></p>
+            <p>Please save this ID for future reference. Our team will process your request and get back to you shortly.
+            </p>
+            <a href="index.html">← Back to Home</a>
+        </div>
+    </div>
+
+    <footer><b>FairStay.co.in</b><span>Rental Agreements • Moving • Property</span></footer>
+
+    <script>
+        // PASTE your Google Apps Script Web App URL (see setup-google-sheet.txt)
+        var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpM2BZt_HoKPa9nwiQZnyZcNqqc7QkletgmHttC6Bopcg9MEuuwgSpvEIAkw4dV9uoXA/exec';
+
+        // Read customer details from URL parameters
+        var params = new URLSearchParams(window.location.search);
+        var customerName = params.get('name') || '';
+        var customerPhone = params.get('phone') || '';
+        var customerEmail = params.get('email') || '';
+        var customerCity = params.get('city') || '';
+        var selectedPlan = params.get('plan') || '';
+        var customerId = params.get('customer_id') || '';
+
+        // Display customer info
+        var ci = document.getElementById('customerInfo');
+        ci.innerHTML =
+            '<div class="ci-item"><div class="customer-id-badge">🆔 Customer ID: ' + customerId + '</div></div>' +
+            '<div class="ci-item"><b>Name:</b> ' + customerName + '</div>' +
+            '<div class="ci-item"><b>Phone:</b> ' + customerPhone + '</div>' +
+            '<div class="ci-item"><b>Email:</b> ' + customerEmail + '</div>' +
+            '<div class="ci-item"><b>City:</b> ' + customerCity + '</div>' +
+            '<div class="ci-item"><b>Plan:</b> ' + selectedPlan + '</div>';
+
+        // Add hidden fields for customer details so they get submitted too
+        var form = document.getElementById('rentalForm');
+        ['name', 'phone', 'email', 'city', 'plan'].forEach(function (key) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'customer_' + key;
+            input.value = params.get(key) || '';
+            form.appendChild(input);
+        });
+
+        // Add customer_id as a hidden field
+        var idInput = document.createElement('input');
+        idInput.type = 'hidden';
+        idInput.name = 'customer_id';
+        idInput.value = customerId;
+        form.appendChild(idInput);
+
+        function submitDetails(e) {
+            e.preventDefault();
+            var form = document.getElementById('rentalForm');
+            var data = new FormData(form);
+            var btn = document.getElementById('submitBtn');
+            btn.textContent = 'Submitting...';
+            btn.disabled = true;
+
+            if (SCRIPT_URL === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                // Demo mode - simulate success
+                setTimeout(function () {
+                    form.style.display = 'none';
+                    document.getElementById('successCustomerId').textContent = customerId;
+                    document.getElementById('successBox').style.display = 'block';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1200);
+                return;
+            }
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: data,
+                mode: 'no-cors'
+            }).then(function () {
+                form.style.display = 'none';
+                document.getElementById('successCustomerId').textContent = customerId;
+                document.getElementById('successBox').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }).catch(function () {
+                alert('Something went wrong. Please try again.');
+                btn.textContent = 'Submit Rental Details';
+                btn.disabled = false;
+            });
+        }
+    </script>
+</body>
+
+</html>

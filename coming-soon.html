@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Coming Soon | FairStay</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #18312b;
+            background: #f7faf8
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background: #fff
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: #116b4c
+        }
+
+        .logo span {
+            color: #e3a52d
+        }
+
+        nav a {
+            color: #314b44;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 14px
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.25
+            }
+        }
+
+        .quote {
+            display: block;
+            text-align: center;
+            background: linear-gradient(90deg, #116b4c, #0b8a63, #e3a52d);
+            color: #fff;
+            padding: 13px 20px;
+            font-weight: 700;
+            font-size: 17px;
+            letter-spacing: 0.4px;
+            box-shadow: 0 4px 18px rgba(22, 107, 76, 0.35)
+        }
+
+        .quote span {
+            animation: blink 1.2s infinite
+        }
+
+        .coming-soon-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            padding: 40px 7%
+        }
+
+        .coming-soon-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 60px 50px;
+            box-shadow: 0 18px 50px #173c2d18;
+            text-align: center;
+            max-width: 520px;
+            width: 100%
+        }
+
+        .coming-soon-card .icon {
+            font-size: 70px;
+            margin-bottom: 15px
+        }
+
+        .coming-soon-card h1 {
+            font-size: 40px;
+            color: #116b4c;
+            margin: 10px 0
+        }
+
+        .coming-soon-card .service-name {
+            font-size: 22px;
+            color: #e3a52d;
+            font-weight: 700;
+            margin: 10px 0 20px
+        }
+
+        .coming-soon-card p {
+            color: #687b75;
+            line-height: 1.6;
+            font-size: 16px;
+            margin: 0 0 30px
+        }
+
+        .coming-soon-card .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: 10px;
+            background: #116b4c;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px
+        }
+
+        .coming-soon-card .btn:hover {
+            background: #0b8a63
+        }
+
+        footer {
+            background: #0b2d25;
+            color: #c7d8d3;
+            padding: 35px 7%;
+            display: flex;
+            justify-content: space-between
+        }
+
+        @media(max-width:760px) {
+            .coming-soon-card {
+                padding: 35px 25px
+            }
+
+            .coming-soon-card h1 {
+                font-size: 30px
+            }
+
+            nav .links {
+                display: none
+            }
+
+            footer {
+                display: block
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <nav>
+            <div class="logo">Fair<span>Stay</span></div>
+            <div class="links"><a href="index.html">Home</a><a href="index.html#services">Services</a><a
+                    href="index.html#contact">Contact</a></div>
+        </nav>
+        <div class="quote"><span>💡 No payment required until finalization</span></div>
+    </div>
+
+    <div class="coming-soon-wrap">
+        <div class="coming-soon-card">
+            <div class="icon">🚧</div>
+            <h1>Coming Soon</h1>
+            <div class="service-name" id="serviceName"></div>
+            <p>We're working hard to bring this service to you. Stay tuned for updates!</p>
+            <a class="btn" href="index.html">← Back to Home</a>
+        </div>
+    </div>
+
+    <footer><b>FairStay.co.in</b><span>Rental Agreements • Moving • Property</span></footer>
+
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var service = params.get('service') || 'this service';
+        document.getElementById('serviceName').textContent = '📍 ' + service;
+        document.title = service + ' | Coming Soon | FairStay';
+    </script>
+</body>
+
+</html>
