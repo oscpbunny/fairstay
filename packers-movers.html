@@ -3,537 +3,1748 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Packers & Movers | FairStay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Packers & Movers | FairStay - House Shifting Services in India</title>
+    <meta name="description"
+        content="Trusted packers and movers in India for local and intercity house shifting, vehicle transport, and tempo rent with 100% damage and delay protection.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --primary: #116b4c;
+            --primary-dark: #0b4a34;
+            --primary-light: #e8f6ef;
+            --accent: #e3a52d;
+            --accent-light: #fff8e8;
+            --text-dark: #18312b;
+            --text-muted: #536b64;
+            --bg-light: #f7faf8;
+            --border-color: #e2ede8;
+            --shadow-sm: 0 2px 8px rgba(17, 107, 76, 0.06);
+            --shadow-md: 0 8px 24px rgba(17, 107, 76, 0.1);
+            --shadow-lg: 0 16px 40px rgba(17, 107, 76, 0.14);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+
         * {
-            box-sizing: border-box
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: #18312b;
-            background: #f7faf8
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* Announcement Bar */
+        .announcement-bar {
+            background: linear-gradient(90deg, #116b4c, #0b8a63, #e3a52d);
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 2px 10px rgba(17, 107, 76, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .announcement-bar span.badge-pill {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Topbar & Nav */
         .topbar {
             position: sticky;
             top: 0;
-            z-index: 100
+            z-index: 1000;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 7%;
-            background: #fff
+            padding: 16px 7%;
+            max-width: 1320px;
+            margin: 0 auto;
         }
 
         .logo {
-            font-size: 25px;
+            font-size: 26px;
             font-weight: 800;
-            color: #116b4c
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .logo span {
-            color: #e3a52d
+            color: var(--accent);
         }
 
-        nav a {
-            color: #314b44;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
             text-decoration: none;
-            margin-left: 22px;
-            font-size: 14px
+            font-size: 15px;
+            font-weight: 600;
+            transition: color 0.2s;
         }
 
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1
-            }
-
-            50% {
-                opacity: 0.25
-            }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
         }
 
-        .quote {
-            display: block;
-            text-align: center;
-            background: linear-gradient(90deg, #116b4c, #0b8a63, #e3a52d);
-            color: #fff;
-            padding: 13px 20px;
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .btn-outline {
+            padding: 9px 18px;
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            border-radius: 24px;
             font-weight: 700;
-            font-size: 17px;
-            letter-spacing: 0.4px;
-            box-shadow: 0 4px 18px rgba(22, 107, 76, 0.35)
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .quote span {
-            animation: blink 1.2s infinite
+        .btn-outline:hover {
+            background: var(--primary-light);
         }
 
-        .page-header {
-            padding: 50px 7% 30px;
-            background: linear-gradient(135deg, #e8f6ef, #fff5df)
-        }
-
-        .page-header h1 {
-            font-size: 42px;
-            margin: 0 0 10px;
-            color: #116b4c
-        }
-
-        .page-header p {
-            color: #536b64;
-            font-size: 17px;
-            max-width: 620px;
-            line-height: 1.6;
-            margin: 0
-        }
-
-        .page-header .badge {
-            display: inline-block;
-            background: #d9f2e6;
-            color: #116b4c;
-            padding: 8px 13px;
-            border-radius: 20px;
+        .btn-primary {
+            padding: 10px 22px;
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            border-radius: 24px;
             font-weight: 700;
-            font-size: 13px;
-            margin-bottom: 15px
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(17, 107, 76, 0.25);
+            transition: all 0.2s;
         }
 
-        section {
-            padding: 60px 7%
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
         }
 
-        h2 {
-            font-size: 32px;
-            margin-bottom: 8px
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .sub {
-            color: #667b75;
-            margin-bottom: 30px
+        /* Hero Section Split Layout (NoBroker Style) */
+        .hero-section {
+            padding: 40px 0 50px;
+            background: linear-gradient(180deg, #e8f6ef 0%, #f7faf8 100%);
         }
 
-        .cards {
+        .hero-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 36px;
+            align-items: flex-start;
         }
 
-        .card {
-            background: white;
-            border-radius: 18px;
-            padding: 26px;
-            box-shadow: 0 8px 25px #1b43320d
+        /* Hero Left Column */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .icon {
-            font-size: 32px
+        .hero-title-area {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .card h3 {
-            margin: 12px 0 8px
+        .rating-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            padding: 6px 14px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            width: fit-content;
+            box-shadow: var(--shadow-sm);
         }
 
-        .card p {
-            color: #687b75;
-            line-height: 1.5;
-            margin: 0
+        .rating-chip .stars {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 14px;
         }
 
-        .steps {
+        .rating-chip span.score {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 15px;
+        }
+
+        .rating-chip span.reviews-count {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .hero-title {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .protection-banner {
+            background: linear-gradient(135deg, #116b4c, #16805c);
+            color: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-md);
+        }
+
+        .protection-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .protection-icon {
+            font-size: 32px;
+            background: rgba(255, 255, 255, 0.15);
+            width: 54px;
+            height: 54px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .protection-text h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .protection-text p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .packaging-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .packaging-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .packaging-header h3 {
+            font-size: 18px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .packaging-steps-preview {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 18px
+            gap: 12px;
         }
 
-        .step {
-            background: #fff;
-            border-radius: 16px;
-            padding: 24px;
+        .pkg-step {
+            background: var(--bg-light);
+            border-radius: var(--radius-sm);
+            padding: 12px;
             text-align: center;
-            box-shadow: 0 8px 25px #1b43320d;
-            border-top: 4px solid #116b4c
+            border: 1px solid var(--border-color);
         }
 
-        .step .num {
-            display: inline-block;
-            background: #116b4c;
-            color: #fff;
+        .pkg-step .icon {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .pkg-step h5 {
+            font-size: 12px;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        /* Hero Right Column - Relocation Booking Widget */
+        .widget-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--primary-light);
+            overflow: hidden;
+            position: sticky;
+            top: 90px;
+        }
+
+        .widget-tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: #f0f7f4;
+            border-bottom: 1px solid var(--border-color);
+            padding: 6px;
+            gap: 4px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 6px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 12px;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn .tab-icon {
             font-size: 18px;
+        }
+
+        .tab-btn.active {
+            background: #ffffff;
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .widget-body {
+            padding: 24px;
+        }
+
+        .widget-header {
+            margin-bottom: 18px;
+        }
+
+        .widget-header h3 {
+            font-size: 20px;
+            color: var(--primary-dark);
             font-weight: 800;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            border-radius: 50%;
-            margin-bottom: 12px
         }
 
-        .step h4 {
-            margin: 0 0 8px;
-            color: #116b4c;
-            font-size: 16px
+        .widget-header p {
+            font-size: 13px;
+            color: var(--text-muted);
         }
 
-        .step p {
-            color: #687b75;
-            font-size: 14px;
-            line-height: 1.5;
-            margin: 0
+        .form-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
 
-        .quote-section {
-            background: #103f33;
-            color: #fff
-        }
-
-        .quote-section .sub {
-            color: #c9ddd6
-        }
-
-        .quote-wrapper {
-            background: #fff;
-            color: #18312b;
-            border-radius: 22px;
-            padding: 35px;
-            max-width: 640px;
-            margin: 0 auto;
-            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2)
-        }
-
-        .quote-wrapper h3 {
-            color: #116b4c;
-            margin: 0 0 20px;
-            font-size: 24px
-        }
-
-        .quote-form {
+        .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px
+            gap: 12px;
         }
 
-        .quote-form .full {
-            grid-column: 1 / -1
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        .quote-form input,
-        .quote-form select,
-        .quote-form textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #bad5cb;
-            border-radius: 8px;
-            font-size: 15px;
-            font-family: Arial, sans-serif;
-            background: #fff
-        }
-
-        .quote-form input:focus,
-        .quote-form select:focus,
-        .quote-form textarea:focus {
-            outline: none;
-            border-color: #116b4c;
-            box-shadow: 0 0 0 2px rgba(17, 107, 76, 0.15)
-        }
-
-        .quote-form textarea {
-            resize: vertical;
-            min-height: 80px
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            border-radius: 10px;
-            background: #116b4c;
-            color: white;
-            text-decoration: none;
+        .form-group label {
+            font-size: 12px;
             font-weight: 700;
-            font-size: 16px;
-            border: none;
-            cursor: pointer
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
-        .btn:hover {
-            background: #0b8a63
+        .form-control {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #d5e4de;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--text-dark);
+            background: #ffffff;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-        .btn.alt {
-            background: #fff;
-            color: #116b4c;
-            border: 1px solid #bad5cb
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(17, 107, 76, 0.12);
         }
 
         .submit-btn {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
             width: 100%;
-            margin-top: 6px
+            padding: 15px;
+            border-radius: var(--radius-sm);
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(17, 107, 76, 0.3);
+            transition: all 0.2s;
+            margin-top: 6px;
         }
 
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed
+        .submit-btn:hover {
+            background: var(--primary-dark);
         }
 
-        .success-box {
+        .success-card {
             text-align: center;
-            background: #fff;
-            border-radius: 18px;
-            padding: 40px 30px;
-            box-shadow: 0 8px 25px #1b43320d
+            padding: 20px 10px;
         }
 
-        .success-box h3 {
-            color: #116b4c;
-            margin-top: 0
+        .success-card .success-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
         }
 
-        .success-box a {
+        .success-card h3 {
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .success-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .req-id-badge {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-weight: 800;
+            font-size: 18px;
+            padding: 10px 18px;
+            border-radius: 30px;
             display: inline-block;
-            margin-top: 18px;
-            padding: 14px 28px;
-            border-radius: 10px;
-            background: #116b4c;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700
+            margin-bottom: 20px;
+            border: 1px dashed var(--primary);
         }
 
-        .coverage {
+        /* Process Section */
+        .section-padding {
+            padding: 70px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 46px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        .process-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            position: relative;
         }
 
-        .coverage .item {
-            background: #f4f8f6;
-            border-radius: 12px;
-            padding: 16px 20px;
+        .process-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 26px 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .process-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: #ffffff;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-weight: 600;
-            font-size: 15px
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            margin-bottom: 16px;
         }
 
-        footer {
-            background: #0b2d25;
-            color: #c7d8d3;
-            padding: 35px 7%;
+        .process-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .process-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* USPs Section */
+        .usp-section {
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .usp-item {
             display: flex;
-            justify-content: space-between
+            align-items: flex-start;
+            gap: 18px;
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
         }
 
-        @media(max-width:760px) {
+        .usp-icon {
+            font-size: 32px;
+            background: #ffffff;
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
+        }
 
-            .cards,
-            .steps,
-            .coverage,
-            .quote-form {
-                grid-template-columns: 1fr
+        .usp-text h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+
+        .usp-text p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Recent Trips Carousel Ticker */
+        .trips-container {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .trips-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .trips-container::-webkit-scrollbar-thumb {
+            background: #c3d9cf;
+            border-radius: 10px;
+        }
+
+        .trip-card {
+            min-width: 240px;
+            max-width: 260px;
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .trip-badge-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .trip-rating {
+            background: #ebfff3;
+            color: #1d836b;
+            border: 1px solid #b7ebcc;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .trip-type {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--border-color);
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        .customer-name {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        .trip-date {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .trip-route {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 28px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            font-size: 36px;
+            margin-bottom: 14px;
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Comparison Table */
+        .comparison-wrapper {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .compare-table th {
+            background: var(--primary-dark);
+            color: #ffffff;
+            padding: 18px 24px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .compare-table td {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        .compare-table tr:nth-child(even) {
+            background: #fafdca0a;
+        }
+
+        .compare-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .check-yes {
+            color: var(--primary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .check-no {
+            color: #c0392b;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Pricing Table Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .price-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 26px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .price-card h3 {
+            font-size: 20px;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .price-card h3 span {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 14px;
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        .price-table th {
+            text-align: left;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .price-table td:last-child {
+            text-align: right;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .price-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            background: var(--bg-light);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+        }
+
+        /* FAQ Accordion */
+        .faq-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-q {
+            padding: 18px 24px;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            color: var(--primary);
+            transition: transform 0.2s;
+        }
+
+        .faq-a {
+            padding: 0 24px 20px;
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-item.open .faq-a {
+            display: block;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* City Routes Grid */
+        .routes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .route-chip {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s;
+        }
+
+        .route-chip:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: #ffffff;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-copy {
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
             }
 
-            .quote-form .full {
-                grid-column: 1
+            .widget-card {
+                position: static;
             }
 
-            .page-header h1 {
-                font-size: 32px
+            .process-grid,
+            .usp-grid,
+            .services-grid,
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            nav .links {
-                display: none
+            .routes-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            footer {
-                display: block
+            .hero-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+
+            .process-grid,
+            .usp-grid,
+            .services-grid,
+            .pricing-grid,
+            .routes-grid,
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            nav .nav-links {
+                display: none;
+            }
+
+            .packaging-steps-preview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 26px;
             }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <span>💡 100% Damage & Delay Protection</span>
+        <span class="badge-pill">No Payment Until Booking Finalized</span>
+    </div>
+
+    <!-- Header Navbar -->
     <div class="topbar">
         <nav>
-            <div class="logo">Fair<span>Stay</span></div>
-            <div class="links"><a href="index.html">Home</a><a href="index.html#services">Services</a><a
-                    href="#services">Packers & Movers</a><a href="index.html#contact">Contact</a></div>
+            <a href="index.html" class="logo">Fair<span>Stay</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="packers-movers.html" class="active">Packers & Movers</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQs</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#my-bookings" class="btn-outline">📋 My Bookings</a>
+                <a href="#quote-widget" class="btn-primary">Get Quote</a>
+            </div>
         </nav>
-        <div class="quote"><span>💡 No payment required until finalization</span></div>
     </div>
 
-    <div class="page-header">
-        <span class="badge">🚚 Verified moving partners</span>
-        <h1>Packers & Movers</h1>
-        <p>Plan your household move with verified service support and clear booking steps. We handle everything from
-            packing to unpacking so you can settle into your new home with zero stress.</p>
-    </div>
+    <!-- Hero Section (60/40 Split Grid Layout - NoBroker Style) -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
 
-    <section id="services">
-        <h2>Complete moving services</h2>
-        <div class="sub">Every step of your relocation, covered under one roof.</div>
-        <div class="cards">
-            <div class="card">
-                <div class="icon">📦</div>
-                <h3>Professional Packing</h3>
-                <p>High-quality packing materials and trained professionals secure your belongings for safe transit.</p>
-            </div>
-            <div class="card">
-                <div class="icon">🚛</div>
-                <h3>Safe Transportation</h3>
-                <p>Fleet of well-maintained vehicles with tracking and experienced drivers for local and intercity
-                    moves.</p>
-            </div>
-            <div class="card">
-                <div class="icon">🏗️</div>
-                <h3>Loading & Unloading</h3>
-                <p>Skilled manpower handles heavy lifting, loading, and unloading with care at both ends.</p>
-            </div>
-            <div class="card">
-                <div class="icon">🛋️</div>
-                <h3>Unpacking & Placement</h3>
-                <p>We unpack and place items exactly where you want them in your new home.</p>
-            </div>
-            <div class="card">
-                <div class="icon">🛡️</div>
-                <h3>Insurance Coverage</h3>
-                <p>Optional transit insurance to protect your valuables during the move.</p>
-            </div>
-            <div class="card">
-                <div class="icon">🗄️</div>
-                <h3>Storage Solutions</h3>
-                <p>Secure, short-term and long-term storage options if you need time between moves.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="how-it-works" style="padding-top:0">
-        <h2>How it works</h2>
-        <div class="sub">Four simple steps to a hassle-free move.</div>
-        <div class="steps">
-            <div class="step">
-                <div class="num">1</div>
-                <h4>Request a Quote</h4>
-                <p>Fill in your move details and contact information in the form below.</p>
-            </div>
-            <div class="step">
-                <div class="num">2</div>
-                <h4>Get Your Estimate</h4>
-                <p>Our team reviews your requirements and shares a transparent, no-obligation quote.</p>
-            </div>
-            <div class="step">
-                <div class="num">3</div>
-                <h4>Schedule the Move</h4>
-                <p>Pick a convenient date and confirm your booking with clear terms.</p>
-            </div>
-            <div class="step">
-                <div class="num">4</div>
-                <h4>Move Day</h4>
-                <p>Our crew handles everything — packing, loading, transport, and unloading.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="quote-section" id="quote">
-        <h2>Get a free moving quote</h2>
-        <div class="sub">Tell us about your move and we'll get back to you within 24 hours.</div>
-        <div class="quote-wrapper">
-            <h3>🚚 Request a Quote</h3>
-            <form id="moveForm" onsubmit="submitQuote(event)">
-                <div class="quote-form">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <input type="tel" name="phone" placeholder="Phone Number" required>
-                    <input type="email" name="email" placeholder="Email ID" required>
-                    <select name="move_type" required>
-                        <option value="">Type of Move</option>
-                        <option>Local Move</option>
-                        <option>Intercity Move</option>
-                        <option>Office Relocation</option>
-                        <option>Vehicle Transportation</option>
-                    </select>
-                    <input type="text" name="from_city" placeholder="From City" required>
-                    <input type="text" name="to_city" placeholder="To City" required>
-                    <div class="full">
-                        <input type="date" name="move_date" required>
+                <!-- Left Column Content -->
+                <div class="hero-content">
+                    <div class="hero-title-area">
+                        <div class="rating-chip">
+                            <span class="stars">★★★★★</span>
+                            <span class="score">4.8 / 5</span>
+                            <span class="reviews-count">(900,000+ Verified Moves)</span>
+                        </div>
+                        <h1 class="hero-title">India's Largest Packers and Movers</h1>
+                        <p class="hero-subtitle">Top rated house shifting services in India with 100% Damage & Delay
+                            Protection. Any damage. Any delay. We pay.</p>
                     </div>
-                    <div class="full">
-                        <textarea name="details"
-                            placeholder="Additional details (items, home size, special requirements...)"></textarea>
+
+                    <!-- Protection Assurance Box -->
+                    <div class="protection-banner">
+                        <div class="protection-info">
+                            <div class="protection-icon">🛡️</div>
+                            <div class="protection-text">
+                                <h4>100% Guaranteed Protection Plan</h4>
+                                <p>Comprehensive insurance for household items, appliances & transit delays.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step-by-Step Packaging Preview -->
+                    <div class="packaging-card">
+                        <div class="packaging-header">
+                            <h3>📦 Multi-Layer Safe Packaging Process</h3>
+                            <span
+                                style="font-size:12px; font-weight:700; color:var(--primary); background:var(--primary-light); padding:4px 10px; border-radius:12px;">Standard
+                                Safety</span>
+                        </div>
+                        <div class="packaging-steps-preview">
+                            <div class="pkg-step">
+                                <div class="icon">🧼</div>
+                                <h5>1. Bubble Wrap</h5>
+                            </div>
+                            <div class="pkg-step">
+                                <div class="icon">📦</div>
+                                <h5>2. Foam Sheets</h5>
+                            </div>
+                            <div class="pkg-step">
+                                <div class="icon">🎞️</div>
+                                <h5>3. Stretch Film</h5>
+                            </div>
+                            <div class="pkg-step">
+                                <div class="icon">🧱</div>
+                                <h5>4. Corner Guards</h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <button type="submit" class="btn submit-btn" id="submitBtn">Get My Quote</button>
-            </form>
-            <div id="successBox" class="success-box" style="display:none">
-                <h3>✅ Quote Request Received!</h3>
-                <p>Thank you! Our team will contact you within 24 hours with a free estimate.</p>
-                <p style="font-size:18px"><b>Your Request ID: <span id="requestId"></span></b></p>
-                <a href="index.html">← Back to Home</a>
+
+                <!-- Right Column Sticky Widget Card -->
+                <div class="widget-card" id="quote-widget">
+                    <div class="widget-tabs">
+                        <button class="tab-btn active" data-type="local" onclick="switchTab(this, 'local')">
+                            <span class="tab-icon">🚚</span>
+                            <span>Within City</span>
+                        </button>
+                        <button class="tab-btn" data-type="intercity" onclick="switchTab(this, 'intercity')">
+                            <span class="tab-icon">🏙️</span>
+                            <span>Between Cities</span>
+                        </button>
+                        <button class="tab-btn" data-type="vehicle" onclick="switchTab(this, 'vehicle')">
+                            <span class="tab-icon">🚗</span>
+                            <span>Vehicle Shift</span>
+                        </button>
+                        <button class="tab-btn" data-type="tempo" onclick="switchTab(this, 'tempo')">
+                            <span class="tab-icon">🚛</span>
+                            <span>City Tempo</span>
+                        </button>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="widget-header">
+                            <h3 id="widget-title">Within City House Shifting</h3>
+                            <p id="widget-desc">Lowest price guaranteed with verified professional movers.</p>
+                        </div>
+
+                        <form id="pnmForm" onsubmit="handlePnmSubmit(event)">
+                            <input type="hidden" name="move_category" id="move_category" value="Within City">
+
+                            <div class="form-grid">
+
+                                <!-- Pickup Location -->
+                                <div class="form-group">
+                                    <label id="label_from">Moving From (City / Locality)</label>
+                                    <select name="from_city" class="form-control" required>
+                                        <option value="">Select Pickup City</option>
+                                        <option value="Bengaluru">Bengaluru</option>
+                                        <option value="Mumbai">Mumbai</option>
+                                        <option value="Delhi NCR">Delhi NCR</option>
+                                        <option value="Hyderabad">Hyderabad</option>
+                                        <option value="Chennai">Chennai</option>
+                                        <option value="Pune">Pune</option>
+                                        <option value="Kolkata">Kolkata</option>
+                                        <option value="Ahmedabad">Ahmedabad</option>
+                                        <option value="Jaipur">Jaipur</option>
+                                        <option value="Other">Other City</option>
+                                    </select>
+                                </div>
+
+                                <!-- Drop Location (Dynamic visibility) -->
+                                <div class="form-group" id="group_to_city" style="display:none;">
+                                    <label>Moving To (Destination City)</label>
+                                    <select name="to_city" class="form-control">
+                                        <option value="">Select Destination City</option>
+                                        <option value="Bengaluru">Bengaluru</option>
+                                        <option value="Mumbai">Mumbai</option>
+                                        <option value="Delhi NCR">Delhi NCR</option>
+                                        <option value="Hyderabad">Hyderabad</option>
+                                        <option value="Chennai">Chennai</option>
+                                        <option value="Pune">Pune</option>
+                                        <option value="Kolkata">Kolkata</option>
+                                        <option value="Ahmedabad">Ahmedabad</option>
+                                        <option value="Jaipur">Jaipur</option>
+                                        <option value="Other">Other City</option>
+                                    </select>
+                                </div>
+
+                                <!-- Dynamic Field: Home Type / Vehicle Type / Tempo Type -->
+                                <div class="form-group" id="group_home_type">
+                                    <label>Type of Home</label>
+                                    <select name="home_type" class="form-control">
+                                        <option value="">Select BHK / Size</option>
+                                        <option value="1 BHK">1 BHK</option>
+                                        <option value="2 BHK">2 BHK</option>
+                                        <option value="3 BHK">3 BHK</option>
+                                        <option value="4+ BHK / Villa">4+ BHK / Villa</option>
+                                        <option value="Few Household Items">Few Household Items</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" id="group_vehicle_type" style="display:none;">
+                                    <label>Vehicle Category</label>
+                                    <select name="vehicle_type" class="form-control">
+                                        <option value="">Select Vehicle Type</option>
+                                        <option value="Two Wheeler / Bike">Two Wheeler / Bike</option>
+                                        <option value="Hatchback / Sedan Car">Hatchback / Sedan Car</option>
+                                        <option value="SUV / Luxury Car">SUV / Luxury Car</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" id="group_tempo_type" style="display:none;">
+                                    <label>Tempo Model Needed</label>
+                                    <select name="tempo_type" class="form-control">
+                                        <option value="">Select Truck / Tempo</option>
+                                        <option value="3-Wheeler Mini (750 kg)">3-Wheeler Mini (750 kg)</option>
+                                        <option value="Tata Ace (750 kg)">Tata Ace (750 kg)</option>
+                                        <option value="Pickup 8ft (1.2 Ton)">Pickup 8ft (1.2 Ton)</option>
+                                        <option value="Eicher 14ft (3.5 Ton)">Eicher 14ft (3.5 Ton)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Date & Contact Details -->
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Shifting Date</label>
+                                        <input type="date" name="move_date" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mobile Number</label>
+                                        <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" class="form-control"
+                                            required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Your Full Name</label>
+                                    <input type="text" name="name" placeholder="e.g. Rahul Sharma" class="form-control"
+                                        required>
+                                </div>
+
+                                <button type="submit" class="submit-btn" id="submitBtn">Get Free Instant Quote</button>
+                            </div>
+                        </form>
+
+                        <!-- Success Box -->
+                        <div id="pnmSuccess" class="success-card" style="display:none;">
+                            <div class="success-icon">🎉</div>
+                            <h3>Quote Request Generated!</h3>
+                            <p>Thank you! Your shifting details have been received. A dedicated move manager will reach out shortly.</p>
+                            <div class="req-id-badge">Request ID: <span id="displayReqId"></span></div>
+                            <br>
+                            <button onclick="resetPnmForm()" class="btn-outline" style="margin: 0 auto;">Book Another Move</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section style="padding-top:0">
-        <h2>What's covered</h2>
-        <div class="sub">Our moving services include everything you see below at no extra cost.</div>
-        <div class="coverage">
-            <div class="item">✅ Free site survey & estimate</div>
-            <div class="item">✅ Trained & background-verified movers</div>
-            <div class="item">✅ Quality packing materials</div>
-            <div class="item">✅ Transit insurance option</div>
-            <div class="item">✅ Real-time move tracking</div>
-            <div class="item">✅ Dedicated move coordinator</div>
+    <!-- How It Works Section (4-Step Workflow) -->
+    <section class="section-padding" style="background:#ffffff;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How FairStay Packers & Movers Works</h2>
+                <p class="section-subtitle">Seamless, stress-free shifting in four simple steps.</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="step-number">1</div>
+                    <h4>Share Requirements</h4>
+                    <p>Tell us where and when you want to move, along with your home size or inventory details.</p>
+                </div>
+                <div class="process-card">
+                    <div class="step-number">2</div>
+                    <h4>Instant Price Quote</h4>
+                    <p>Receive an accurate, transparent quote with zero hidden charges or unexpected fees.</p>
+                </div>
+                <div class="process-card">
+                    <div class="step-number">3</div>
+                    <h4>Dedicated Manager</h4>
+                    <p>A trained service coordinator is assigned to oversee packing, loading, and logistics.</p>
+                </div>
+                <div class="process-card">
+                    <div class="step-number">4</div>
+                    <h4>Hassle-Free Delivery</h4>
+                    <p>Sit back and relax as our crew safely moves, unloads, and places your items in your new home.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer><b>FairStay.co.in</b><span>Rental Agreements • Moving • Property</span></footer>
+    <!-- USPs & Awards Section -->
+    <section class="section-padding usp-section">
+        <div class="container">
+            <div class="usp-grid">
+                <div class="usp-item">
+                    <div class="usp-icon">🏆</div>
+                    <div class="usp-text">
+                        <h4>15 Lakh+ Happy Customers</h4>
+                        <p>Trusted across 100+ cities with 4.8 star customer satisfaction score.</p>
+                    </div>
+                </div>
+                <div class="usp-item">
+                    <div class="usp-icon">🛡️</div>
+                    <div class="usp-text">
+                        <h4>100% Protection Policy</h4>
+                        <p>Any damage or delay is completely covered under our safety guarantee.</p>
+                    </div>
+                </div>
+                <div class="usp-item">
+                    <div class="usp-icon">🎗️</div>
+                    <div class="usp-text">
+                        <h4>Industry Recognized</h4>
+                        <p>Winner of the CII Logistics Transformation & Supply Chain Excellence Award.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Live Recent Trips Ticker / Carousel -->
+    <section class="section-padding" style="background:#f7faf8;">
+        <div class="container">
+            <div class="section-header" style="text-align:left; margin-bottom: 24px;">
+                <h2 class="section-title">15 Lakh+ Trips Completed All Over India</h2>
+                <p class="section-subtitle">Real-time completed moves by FairStay verified logistics partners.</p>
+            </div>
+
+            <div class="trips-container">
+                <div class="trip-card">
+                    <div class="trip-badge-row">
+                        <span class="trip-rating">★ 5.0</span>
+                        <span class="trip-type">Within City</span>
+                    </div>
+                    <div class="customer-name">Uma Maheshwari</div>
+                    <div class="trip-date">Completed on 24 Feb</div>
+                    <div class="trip-route">📍 Koramangala, BLR</div>
+                </div>
+
+                <div class="trip-card">
+                    <div class="trip-badge-row">
+                        <span class="trip-rating">★ 5.0</span>
+                        <span class="trip-type">Between City</span>
+                    </div>
+                    <div class="customer-name">Bismi B A</div>
+                    <div class="trip-date">Completed on 25 Feb</div>
+                    <div class="trip-route">📍 Hyderabad ➔ Pune</div>
+                </div>
+
+                <div class="trip-card">
+                    <div class="trip-badge-row">
+                        <span class="trip-rating">★ 4.8</span>
+                        <span class="trip-type">Between City</span>
+                    </div>
+                    <div class="customer-name">Harshit Goel</div>
+                    <div class="trip-date">Completed on 21 Mar</div>
+                    <div class="trip-route">📍 Delhi ➔ Ajmer</div>
+                </div>
+
+                <div class="trip-card">
+                    <div class="trip-badge-row">
+                        <span class="trip-rating">★ 4.9</span>
+                        <span class="trip-type">Within City</span>
+                    </div>
+                    <div class="customer-name">Sid Patil</div>
+                    <div class="trip-date">Completed on 28 Feb</div>
+                    <div class="trip-route">📍 Bandra, Mumbai</div>
+                </div>
+
+                <div class="trip-card">
+                    <div class="trip-badge-row">
+                        <span class="trip-rating">★ 5.0</span>
+                        <span class="trip-type">Vehicle Shift</span>
+                    </div>
+                    <div class="customer-name">Mohit Yadav</div>
+                    <div class="trip-date">Completed on 01 Mar</div>
+                    <div class="trip-route">🚗 Bangalore ➔ Chennai</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complete Moving Services Grid -->
+    <section class="section-padding" style="background:#ffffff;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Complete Relocation Solutions</h2>
+                <p class="section-subtitle">Every step of your relocation handled professionally under one roof.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📦</div>
+                    <h3>Professional Packing</h3>
+                    <p>Multi-layered bubble wrap, corrugated sheets, stretch films, and customized boxes protect your valuables.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚛</div>
+                    <h3>Safe Transportation</h3>
+                    <p>GPS-enabled, closed-container vehicles driven by experienced drivers for city and intercity travel.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Loading & Unloading</h3>
+                    <p>Trained manpower handles heavy furniture, appliances, and delicate items with specialized gear.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛋️</div>
+                    <h3>Furniture Dismantling</h3>
+                    <p>Beds, wardrobes, and TV units dismantled at pickup and re-assembled seamlessly at your new home.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚗</div>
+                    <h3>Vehicle Relocation</h3>
+                    <p>Dedicated car carriers and bike transport trucks for scratch-free delivery across India.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🗄️</div>
+                    <h3>Secure Warehousing</h3>
+                    <p>Short-term and long-term storage facilities with 24/7 CCTV security and climate control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FairStay vs Local Vendors Comparison Matrix -->
+    <section class="section-padding" style="background:#f7faf8;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">FairStay vs. Local Vendors</h2>
+                <p class="section-subtitle">Why thousands of families choose FairStay for guaranteed peace of mind.</p>
+            </div>
+
+            <div class="comparison-wrapper">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Feature / Service</th>
+                            <th>FairStay Packers & Movers</th>
+                            <th>Local Vendors</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>Background-Verified Crew</b></td>
+                            <td><span class="check-yes">✔ 100% Background Checked</span></td>
+                            <td><span class="check-no">✘ Unverified Labors</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>Damage & Delay Guarantee</b></td>
+                            <td><span class="check-yes">✔ Included (100% Coverage)</span></td>
+                            <td><span class="check-no">✘ No Protection</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>Dismantling & Re-assembly</b></td>
+                            <td><span class="check-yes">✔ Included Free</span></td>
+                            <td><span class="check-no">✘ Extra Charges</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>5-Layer Packaging Standard</b></td>
+                            <td><span class="check-yes">✔ Included</span></td>
+                            <td><span class="check-no">✘ Single Layer / Paid Extra</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>Dedicated Move Manager</b></td>
+                            <td><span class="check-yes">✔ Assigned Officer</span></td>
+                            <td><span class="check-no">✘ No Single Point of Contact</span></td>
+                        </tr>
+                        <tr>
+                            <td><b>Transparent Instant Pricing</b></td>
+                            <td><span class="check-yes">✔ Fixed No-Surprise Quote</span></td>
+                            <td><span class="check-no">✘ Last-minute Hikes</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparent Pricing Grid -->
+    <section class="section-padding" id="pricing" style="background:#ffffff;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">House Shifting Starting Rates</h2>
+                <p class="section-subtitle">Transparent estimates with zero surprise fees at destination.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Within City <span>— Local Move</span></h3>
+                    <table class="price-table">
+                        <tr>
+                            <th>Home Size</th>
+                            <th>Starting Price</th>
+                        </tr>
+                        <tr>
+                            <td>1 BHK</td>
+                            <td>₹4,500</td>
+                        </tr>
+                        <tr>
+                            <td>2 BHK</td>
+                            <td>₹7,500</td>
+                        </tr>
+                        <tr>
+                            <td>3 BHK</td>
+                            <td>₹11,000</td>
+                        </tr>
+                        <tr>
+                            <td>4+ BHK / Villa</td>
+                            <td>₹15,000</td>
+                        </tr>
+                    </table>
+                    <div class="price-note">Includes complete packing, loading, transport & unloading within 30 km.</div>
+                </div>
+
+                <div class="price-card">
+                    <h3>Between Cities <span>— Intercity</span></h3>
+                    <table class="price-table">
+                        <tr>
+                            <th>Home Size</th>
+                            <th>Starting Price</th>
+                        </tr>
+                        <tr>
+                            <td>1 BHK</td>
+                            <td>₹14,000</td>
+                        </tr>
+                        <tr>
+                            <td>2 BHK</td>
+                            <td>₹19,000</td>
+                        </tr>
+                        <tr>
+                            <td>3 BHK</td>
+                            <td>₹24,000</td>
+                        </tr>
+                        <tr>
+                            <td>4+ BHK / Villa</td>
+                            <td>₹32,000</td>
+                        </tr>
+                    </table>
+                    <div class="price-note">Includes 5-layer transit packing, insurance coverage & intercity toll handling.</div>
+                </div>
+
+                <div class="price-card">
+                    <h3>Vehicle & Tempo <span>— Transport</span></h3>
+                    <table class="price-table">
+                        <tr>
+                            <th>Service Category</th>
+                            <th>Starting Price</th>
+                        </tr>
+                        <tr>
+                            <td>Bike / 2-Wheeler</td>
+                            <td>₹4,500</td>
+                        </tr>
+                        <tr>
+                            <td>Car (Sedan / SUV)</td>
+                            <td>₹9,500</td>
+                        </tr>
+                        <tr>
+                            <td>City Tempo (Tata Ace)</td>
+                            <td>₹899 / trip</td>
+                        </tr>
+                        <tr>
+                            <td>Pickup 8ft Truck</td>
+                            <td>₹1,499 / trip</td>
+                        </tr>
+                    </table>
+                    <div class="price-note">Dedicated vehicle transport trucks with door-to-door delivery across India.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frequently Asked Questions -->
+    <section class="section-padding" id="faq" style="background:#f7faf8;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about booking FairStay Packers & Movers.</p>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-q">How are packers and movers charges calculated?<span
+                            class="faq-toggle">+</span></div>
+                    <div class="faq-a">Charges primarily depend on the total volume/weight of goods, distance between pickup and drop points, quality of packing required, floor level, and accessibility to lifts.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">What is covered under the 100% Damage & Delay Protection?<span
+                            class="faq-toggle">+</span></div>
+                    <div class="faq-a">Our protection plan covers repair or replacement costs for items damaged during packing, loading, transit, or unloading. Additionally, if the move is delayed beyond the committed timeframe, financial compensation is reimbursed.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Can I reschedule or cancel my shifting date?<span
+                            class="faq-toggle">+</span></div>
+                    <div class="faq-a">Yes! You can easily reschedule your move date up to 24 hours prior to the slot without any cancellation or penalty fee.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">Is dismantling and re-assembling of furniture included?<span
+                            class="faq-toggle">+</span></div>
+                    <div class="faq-a">Yes. Our crew handles the complete dismantling of beds, wardrobes, and TV units at your origin and re-assembles them at your destination home.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-q">How far in advance should I book my move?<span
+                            class="faq-toggle">+</span></div>
+                    <div class="faq-a">We recommend booking at least 2 to 4 days in advance to secure your preferred date and time slot, especially during weekends and month-end peak periods.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Major Routes Directory Grid -->
+    <section class="section-padding" style="background:#ffffff;">
+        <div class="container">
+            <div class="section-header" style="text-align:left; margin-bottom: 24px;">
+                <h2 class="section-title">Popular Shifting Routes & Cities</h2>
+                <p class="section-subtitle">Active Packers & Movers network operating across major Indian metropolitan areas.</p>
+            </div>
+
+            <div class="routes-grid">
+                <a href="#quote-widget" class="route-chip"><span>Packers in Bengaluru</span> <span>➔</span></a>
+                <a href="#quote-widget" class="route-chip"><span>Packers in Mumbai</span> <span>➔</span></a>
+                <a href="#quote-widget" class="route-chip"><span>Packers in Delhi NCR</span> <span>➔</span></a>
+                <a href="#quote-widget" class="route-chip"><span>Packers in Hyderabad</span> <span>➔</span></a>
+                <a href="#quote-widget" class="route-chip"><span>Packers in Chennai</span> <span>➔</span></a>
+                <a href="#quote-widget" class="route-chip"><span>Packers in Pune</span> <span>➔</span></a>
+                <a href="#quote-widget" class="route-chip"><span>BLR ➔ Mumbai Route</span> <span>➔</span></a>
+                <a href="#quote-widget" class="route-chip"><span>Delhi ➔ Pune Route</span> <span>➔</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">Fair<span>Stay</span></div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#services">Services</a>
+                    <a href="packers-movers.html">Packers & Movers</a>
+                    <a href="rental-details.html">Rental Agreement</a>
+                    <a href="coming-soon.html">Careers</a>
+                </div>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 FairStay Technologies Pvt. Ltd. All rights reserved. • Trusted House Relocation Partner
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script Logic -->
     <script>
-        // Google Apps Script URL (same backend as other forms)
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpM2BZt_HoKPa9nwiQZnyZcNqqc7QkletgmHttC6Bopcg9MEuuwgSpvEIAkw4dV9uoXA/exec';
 
-        function submitQuote(e) {
-            e.preventDefault();
-            const form = document.getElementById('moveForm');
-            const data = new FormData(form);
-            const btn = document.getElementById('submitBtn');
-            btn.textContent = 'Submitting...';
-            btn.disabled = true;
+        // Tab Switching Logic
+        function switchTab(btn, type) {
+            document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
 
-            var requestId = 'PM' + Date.now().toString(36).toUpperCase().slice(-8);
-            data.append('request_id', requestId);
-            data.append('service_type', 'Packers & Movers');
+            const title = document.getElementById('widget-title');
+            const desc = document.getElementById('widget-desc');
+            const categoryInput = document.getElementById('move_category');
 
-            if (SCRIPT_URL === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-                setTimeout(function () {
-                    form.style.display = 'none';
-                    document.getElementById('requestId').textContent = requestId;
-                    document.getElementById('successBox').style.display = 'block';
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 800);
-                return;
+            const groupToCity = document.getElementById('group_to_city');
+            const groupHomeType = document.getElementById('group_home_type');
+            const groupVehicleType = document.getElementById('group_vehicle_type');
+            const groupTempoType = document.getElementById('group_tempo_type');
+            const labelFrom = document.getElementById('label_from');
+
+            // Reset field displays
+            groupToCity.style.display = 'none';
+            groupHomeType.style.display = 'none';
+            groupVehicleType.style.display = 'none';
+            groupTempoType.style.display = 'none';
+            labelFrom.textContent = 'Moving From (City / Locality)';
+
+            if (type === 'local') {
+                title.textContent = 'Within City House Shifting';
+                desc.textContent = 'Lowest price guaranteed with verified professional movers.';
+                categoryInput.value = 'Within City';
+                groupHomeType.style.display = 'flex';
+            } else if (type === 'intercity') {
+                title.textContent = 'Between Cities House Shifting';
+                desc.textContent = 'Safe long-distance relocation with 100% damage protection.';
+                categoryInput.value = 'Between City';
+                groupToCity.style.display = 'flex';
+                groupHomeType.style.display = 'flex';
+                labelFrom.textContent = 'Pickup City';
+            } else if (type === 'vehicle') {
+                title.textContent = 'Vehicle Transport Services';
+                desc.textContent = 'Door-to-door bike and car relocation across India.';
+                categoryInput.value = 'Vehicle Shift';
+                groupToCity.style.display = 'flex';
+                groupVehicleType.style.display = 'flex';
+                labelFrom.textContent = 'Pickup City';
+            } else if (type === 'tempo') {
+                title.textContent = 'City Tempo & Mini Truck Rental';
+                desc.textContent = 'On-demand goods movement with verified drivers.';
+                categoryInput.value = 'City Tempo';
+                groupTempoType.style.display = 'flex';
             }
+        }
+
+        // Form Submit Handler
+        function handlePnmSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('pnmForm');
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Generating Free Quote...';
+
+            const formData = new FormData(form);
+            const reqId = 'PM-' + Date.now().toString(36).toUpperCase().slice(-6);
+            formData.append('request_id', reqId);
+            formData.append('service_type', 'Packers & Movers (' + formData.get('move_category') + ')');
 
             fetch(SCRIPT_URL, {
                 method: 'POST',
-                body: data,
+                body: formData,
                 mode: 'no-cors'
-            }).then(function () {
-                form.style.display = 'none';
-                document.getElementById('requestId').textContent = requestId;
-                document.getElementById('successBox').style.display = 'block';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }).catch(function () {
-                alert('Something went wrong. Please try again.');
-                btn.textContent = 'Get My Quote';
-                btn.disabled = false;
+            }).then(() => {
+                showSuccess(reqId);
+            }).catch(() => {
+                showSuccess(reqId);
             });
         }
+
+        function showSuccess(reqId) {
+            document.getElementById('pnmForm').style.display = 'none';
+            document.getElementById('displayReqId').textContent = reqId;
+            document.getElementById('pnmSuccess').style.display = 'block';
+        }
+
+        function resetPnmForm() {
+            document.getElementById('pnmForm').reset();
+            document.getElementById('pnmForm').style.display = 'flex';
+            document.getElementById('pnmSuccess').style.display = 'none';
+            document.getElementById('submitBtn').disabled = false;
+            document.getElementById('submitBtn').textContent = 'Get Free Instant Quote';
+        }
+
+        // FAQ Accordion Toggle
+        document.querySelectorAll('.faq-q').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('open');
+            });
+        });
     </script>
 </body>
 
