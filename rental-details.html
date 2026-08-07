@@ -266,7 +266,305 @@
             justify-content: space-between
         }
 
+        .layout {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start
+        }
+
+        .main-col {
+            flex: 1 1 auto;
+            min-width: 0
+        }
+
+        .side-panel {
+            flex: 0 0 320px;
+            position: sticky;
+            top: 120px
+        }
+
+        .side-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 8px 25px #1b43320d;
+            border: 2px solid #e3a52d
+        }
+
+        .side-card h4 {
+            margin: 0 0 15px;
+            color: #116b4c;
+            font-size: 18px;
+            border-bottom: 3px solid #e3a52d;
+            padding-bottom: 10px
+        }
+
+        .side-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #116b4c;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 auto 15px
+        }
+
+        .si-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px dashed #d5e4de;
+            font-size: 14px
+        }
+
+        .si-row span {
+            color: #6b837b
+        }
+
+        .si-row b {
+            color: #18312b;
+            text-align: right
+        }
+
+        .sample-note {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #8aa19a;
+            background: #f4f8f6;
+            padding: 10px;
+            border-radius: 8px;
+            line-height: 1.5
+        }
+
+        .agreement-card {
+            font-family: Georgia, 'Times New Roman', serif
+        }
+
+        .agree-head {
+            text-align: center;
+            border-bottom: 3px double #116b4c;
+            padding-bottom: 12px;
+            margin-bottom: 14px
+        }
+
+        .agree-brand {
+            font-weight: 800;
+            font-size: 16px;
+            color: #116b4c
+        }
+
+        .agree-brand span {
+            color: #e3a52d
+        }
+
+        .agree-head h4 {
+            margin: 6px 0 4px;
+            letter-spacing: 2px;
+            color: #18312b;
+            font-size: 17px;
+            border: none;
+            padding: 0
+        }
+
+        .agree-number {
+            font-size: 12px;
+            color: #6b837b
+        }
+
+        .agree-body {
+            font-size: 13px
+        }
+
+        .agree-preamble {
+            font-style: italic;
+            color: #314b44;
+            line-height: 1.5
+        }
+
+        .party {
+            margin: 10px 0
+        }
+
+        .party-title {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: #116b4c;
+            border-bottom: 1px dotted #bcd8cf;
+            padding-bottom: 3px;
+            margin-bottom: 6px
+        }
+
+        .ag-line {
+            display: flex;
+            padding: 2px 0
+        }
+
+        .ag-line span {
+            color: #6b837b;
+            width: 74px;
+            flex: none
+        }
+
+        .ag-line b {
+            color: #18312b;
+            font-weight: 600
+        }
+
+        .terms ul {
+            margin: 4px 0 0;
+            padding-left: 16px
+        }
+
+        .terms li {
+            margin-bottom: 3px;
+            line-height: 1.4
+        }
+
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            margin-top: 16px;
+            border-top: 1px dashed #bcd8cf;
+            padding-top: 12px
+        }
+
+        .sig {
+            flex: 1;
+            text-align: center
+        }
+
+        .sig b {
+            font-size: 12px;
+            color: #314b44
+        }
+
+        .sig-line {
+            border-bottom: 1px solid #314b44;
+            height: 26px;
+            margin-top: 4px
+        }
+
+        .sig-line::after {
+            content: '';
+            display: block
+        }
+
+        .agreement-card {
+            font-family: Georgia, 'Times New Roman', serif;
+            max-height: calc(100vh - 150px);
+            overflow-y: auto
+        }
+
+        .ag-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #116b4c;
+            margin: 0 0 6px;
+            border-bottom: 3px double #116b4c;
+            padding-bottom: 10px
+        }
+
+        .ag-sub {
+            text-align: center;
+            font-size: 12px;
+            color: #6b837b;
+            margin-bottom: 12px
+        }
+
+        .clause {
+            margin: 9px 0;
+            text-align: justify;
+            line-height: 1.55;
+            font-size: 13px;
+            color: #18312b
+        }
+
+        .clause-num {
+            font-weight: 800;
+            color: #116b4c
+        }
+
+        .ag-section {
+            margin: 10px 0;
+            font-weight: 800;
+            color: #116b4c;
+            letter-spacing: 1px;
+            font-size: 13px;
+            border-bottom: 1px dotted #bcd8cf;
+            padding-bottom: 3px
+        }
+
+        .blank {
+            display: inline-block;
+            border-bottom: 1px solid #18312b;
+            min-width: 80px;
+            padding: 0 5px;
+            font-weight: 700;
+            color: #116b4c;
+            line-height: 1.2
+        }
+
+        .ag-witness {
+            margin: 8px 0;
+            font-size: 13px;
+            color: #18312b
+        }
+
+        .ag-witness b {
+            color: #116b4c
+        }
+
+        .ag-annex-title {
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #116b4c;
+            margin: 14px 0 6px;
+            font-size: 14px
+        }
+
+        .sign-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 14px;
+            border-top: 1px dashed #bcd8cf;
+            padding-top: 12px
+        }
+
+        .sig-box {
+            flex: 1;
+            text-align: center;
+            font-size: 12px;
+            color: #314b44
+        }
+
+        .sig-box .sig-line {
+            border-bottom: 1px solid #314b44;
+            height: 30px;
+            margin: 4px 0
+        }
+
         @media(max-width:760px) {
+            .layout {
+                flex-direction: column
+            }
+
+            .side-panel {
+                position: static;
+                flex: none;
+                width: 100%
+            }
+
             .form-grid {
                 grid-template-columns: 1fr
             }
@@ -304,6 +602,8 @@
     <div class="customer-info" id="customerInfo"></div>
 
     <div class="form-wrap">
+        <div class="layout">
+            <div class="main-col">
         <form id="rentalForm" onsubmit="submitDetails(event)">
             <!-- =================== PROPERTY DETAILS =================== -->
             <div class="form-section">
@@ -602,7 +902,15 @@
             </p>
             <a href="index.html">← Back to Home</a>
         </div>
-    </div>
+            </div><!-- /main-col -->
+
+            <aside class="side-panel">
+                <div class="side-card agreement-card">
+                    <div id="agreementPreview"></div>
+                </div>
+            </aside>
+        </div><!-- /layout -->
+    </div><!-- /form-wrap -->
 
     <footer><b>FairStay.co.in</b><span>Rental Agreements • Moving • Property</span></footer>
 
@@ -645,6 +953,105 @@
         idInput.name = 'customer_id';
         idInput.value = customerId;
         form.appendChild(idInput);
+
+        // Helper: read a form field value with a sample fallback
+        function fval(name, fb) {
+            var el = form.elements[name];
+            if (el && el.value && el.value.trim()) { return el.value.trim(); }
+            return fb;
+        }
+
+        // Build the FULL rental agreement (sample format) in the side panel.
+        function buildCustomerPreview() {
+            var p = {
+                id: customerId || 'FS-1042',
+                name: customerName || 'Rahul Sharma',
+                city: customerCity || 'Bengaluru'
+            };
+            var place = fval('location', p.city);
+            var ownerName = fval('owner_name', 'Anil Kumar');
+            var ownerAddr = fval('owner_address', 'No. 12, 2nd Main, Indiranagar, ' + place + ' - 560038');
+            var tenantName = fval('tenant_name', p.name);
+            var tenantAddr = fval('tenant_address', place + ', Karnataka - 560001');
+            var propAddr = fval('property_address', 'Flat No. 301, Green Residency, Whitefield, ' + place);
+            var bhk = fval('bhk_type', '2 BHK');
+            var rent = fval('rent_amount', '25,000');
+            var rentDay = fval('rent_day', '7th');
+            var maint = fval('maintenance_amount', '3,000');
+            var deposit = fval('refundable_deposit', '50,000');
+            var startDate = fval('agreement_start_date', '');
+            var fans = fval('fans', '3');
+            var beds = fval('beds', '2');
+            var geysers = fval('geysers', '1');
+            var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+                'October', 'November', 'December'
+            ];
+            var sd = '';
+            if (startDate) {
+                var parts = startDate.split('-');
+                if (parts.length === 3) { sd = parts[2] + ' ' + months[parseInt(parts[1], 10) - 1] + ' ' + parts[0]; }
+            }
+
+            var h = '';
+            h += '<div class="ag-title">RENTAL AGREEMENT</div>';
+            h += '<div class="ag-sub">Agreement No: <b>' + p.id + '</b></div>';
+            h += '<div class="clause">This RENTAL AGREEMENT is executed at <span class="blank">' + place +
+                '</span> on this ' + (sd || '<span class="blank"></span>') + ' day by and between:</div>';
+            h += '<div class="ag-section">ONE PART</div>';
+            h += '<div class="clause"><b>' + ownerName + '</b>,<br>S/o or D/o. <span class="blank"></span>,<br>' +
+                ownerAddr + '<br><span style="font-style:italic">(hereinafter jointly and severally called the "OWNER", which expression shall include their heirs, legal representatives, successors and assigns)</span></div>';
+            h += '<div class="ag-section">OTHER PART</div>';
+            h += '<div class="clause">AND, in favour of:<br><b>' + tenantName + '</b>,<br>S/o or D/o. <span class="blank"></span>,<br>Working/Studying at <span class="blank"></span><br>having a permanent address at ' +
+                tenantAddr + '<br><span style="font-style:italic">(hereinafter called the "TENANT", which expression shall include its legal representatives, successors and assigns)</span></div>';
+            h += '<div class="clause"><span style="font-style:italic">WHEREAS</span> the Owner is the absolute owner of the property situated at ' +
+                propAddr + ' as detailed in Annexure-I, hereinafter referred to as "Demised Premises".</div>';
+            h += '<div class="clause"><span style="font-style:italic">WHEREAS</span> the Tenant has requested the Owner to grant Rent for residential purposes only, on the following terms and conditions:</div>';
+            h += '<div class="clause"><b>NOW THIS DEED WITNESSETH AS FOLLOWS:</b></div>';
+            h += '<div class="clause"><span class="clause-num">1.</span> The rent shall commence from <span class="blank">' + (sd || '') +
+                '</span> and shall be valid till <span class="blank"></span>. Thereafter, the same may be extended on mutual consent of both the parties.</div>';
+            h += '<div class="clause"><span class="clause-num">2.</span> The Tenant shall pay a monthly rent of Rs.<span class="blank">' + rent +
+                '</span>, excluding electricity and water bill, on or before ' + rentDay + ' day of each month without fail.</div>';
+            h += '<div class="clause"><span class="clause-num">3.</span> The Tenant shall pay a monthly maintenance charge of Rs.<span class="blank">' + maint +
+                '</span> towards generator &amp; elevator, guard salaries, common area electricity &amp; cleaning and lawn maintenance.</div>';
+            h += '<div class="clause"><span class="clause-num">4.</span> The Tenant shall pay for the running cost of elevator and generator separately to the Owner.</div>';
+            h += '<div class="clause"><span class="clause-num">5.</span> The Tenant shall pay for electricity and water as per bills from the authorities directly and clear all dues till the date of handing over possession.</div>';
+            h += '<div class="clause"><span class="clause-num">6.</span> The Tenant will pay an interest-free refundable security deposit of Rs.<span class="blank">' + deposit +
+                '</span> at the time of signing this Rent Agreement, refundable upon handing over possession after adjusting any dues.</div>';
+            h += '<div class="clause"><span class="clause-num">7.</span> All sanitary, electrical and other fittings, fixtures and appliances shall be handed over in good working condition.</div>';
+            h += '<div class="clause"><span class="clause-num">8.</span> The Tenant shall not sublet, assign or part with the demised premises in whole or in part, and it shall be used for bonafide residential purposes only.</div>';
+            h += '<div class="clause"><span class="clause-num">9.</span> Day-to-day minor repairs shall be the responsibility of the Tenant at his own expense; structural or major repairs shall be carried out by the Owner.</div>';
+            h += '<div class="clause"><span class="clause-num">10.</span> No structural additions or alterations shall be made by the Tenant without the prior written consent of the Owner, but the Tenant may install air-conditioners and other gadgets at his own cost.</div>';
+            h += '<div class="clause"><span class="clause-num">11.</span> The Owner shall have the right to inspect the premises (not exceeding once a month) or carry out repairs/construction as and when required.</div>';
+            h += '<div class="clause"><span class="clause-num">12.</span> The Tenant shall comply with all the rules and regulations of the local authority applicable to the demised premises.</div>';
+            h += '<div class="clause"><span class="clause-num">13.</span> The Owner shall pay for all taxes/cesses levied on the premises by the local or government authorities, as well as welfare association fees.</div>';
+            h += '<div class="clause"><span class="clause-num">14.</span> The Owner will keep the Tenant free and harmless from any claims, proceedings, demands or actions with respect to quiet possession of the premises.</div>';
+            h += '<div class="clause"><span class="clause-num">15.</span> This Rent Agreement can be terminated before expiry by serving one month prior notice in writing by either party.</div>';
+            h += '<div class="clause"><span class="clause-num">16.</span> The Tenant shall maintain the Demised Premises in good and tenable condition and hand over vacant possession on expiry or early termination.</div>';
+            h += '<div class="clause"><span class="clause-num">17.</span> In case the premises are not vacated on termination, the Tenant will pay damages calculated at two times the rent for any period of occupation.</div>';
+            h += '<div class="clause"><span class="clause-num">18.</span> Both parties shall observe and adhere to the terms and conditions contained hereinabove.</div>';
+            h += '<div class="clause"><span class="clause-num">19.</span> Both parties represent and warrant that they are fully empowered and competent to make this Rent and have signed without any force or pressure.</div>';
+            h += '<div class="clause"><span class="clause-num">20.</span> Any dispute shall be settled in the jurisdiction of the <span class="blank">' + place + '</span> civil courts.</div>';
+            h += '<div class="clause"><span class="clause-num">21.</span> The Rent Agreement will be registered before the Registrar; stamp duty, court fee &amp; lawyer fees shall be borne equally by Owner and Tenant.</div>';
+
+            h += '<div class="ag-annex-title">ANNEXURE-I</div>';
+            h += '<div class="clause">The property at <span class="blank">' + propAddr + '</span>, consisting ' + bhk +
+                ', and inventory of ' + fans + ' fans, ' + beds + ' beds, ' + geysers + ' geyser, 2 mirrors.</div>';
+
+            h += '<div class="clause" style="margin-top:12px"><b>IN WITNESS WHEREOF</b> both parties agree and sign this agreement on this day and year.</div>';
+            h += '<div class="ag-section" style="border:none">WITNESSES:</div>';
+            h += '<div class="ag-witness"><b>1.</b> <span class="blank"></span><br>Signature: <span class="blank"></span><br>Address: <span class="blank"></span></div>';
+            h += '<div class="ag-witness"><b>2.</b> <span class="blank"></span><br>Signature: <span class="blank"></span><br>Address: <span class="blank"></span></div>';
+
+            h += '<div class="sign-row" style="border:none;padding-top:6px">';
+            h += '<div class="sig-box"><div>Signature of Owner</div><div class="sig-line"></div><b>' + ownerName + '</b><div>OWNER</div></div>';
+            h += '<div class="sig-box"><div>Signature of Tenant</div><div class="sig-line"></div><b>' + tenantName + '</b><div>TENANT</div></div>';
+            h += '</div>';
+            document.getElementById('agreementPreview').innerHTML = h;
+        }
+        buildCustomerPreview();
+
+        // Live-update the agreement preview as the customer types in the form
+        form.addEventListener('input', buildCustomerPreview);
 
         function submitDetails(e) {
             e.preventDefault();
