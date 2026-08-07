@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Packers & Movers | FairStay</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #18312b;
+            background: #f7faf8
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background: #fff
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: #116b4c
+        }
+
+        .logo span {
+            color: #e3a52d
+        }
+
+        nav a {
+            color: #314b44;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 14px
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.25
+            }
+        }
+
+        .quote {
+            display: block;
+            text-align: center;
+            background: linear-gradient(90deg, #116b4c, #0b8a63, #e3a52d);
+            color: #fff;
+            padding: 13px 20px;
+            font-weight: 700;
+            font-size: 17px;
+            letter-spacing: 0.4px;
+            box-shadow: 0 4px 18px rgba(22, 107, 76, 0.35)
+        }
+
+        .quote span {
+            animation: blink 1.2s infinite
+        }
+
+        .page-header {
+            padding: 50px 7% 30px;
+            background: linear-gradient(135deg, #e8f6ef, #fff5df)
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin: 0 0 10px;
+            color: #116b4c
+        }
+
+        .page-header p {
+            color: #536b64;
+            font-size: 17px;
+            max-width: 620px;
+            line-height: 1.6;
+            margin: 0
+        }
+
+        .page-header .badge {
+            display: inline-block;
+            background: #d9f2e6;
+            color: #116b4c;
+            padding: 8px 13px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 15px
+        }
+
+        section {
+            padding: 60px 7%
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 8px
+        }
+
+        .sub {
+            color: #667b75;
+            margin-bottom: 30px
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 26px;
+            box-shadow: 0 8px 25px #1b43320d
+        }
+
+        .icon {
+            font-size: 32px
+        }
+
+        .card h3 {
+            margin: 12px 0 8px
+        }
+
+        .card p {
+            color: #687b75;
+            line-height: 1.5;
+            margin: 0
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px
+        }
+
+        .step {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 8px 25px #1b43320d;
+            border-top: 4px solid #116b4c
+        }
+
+        .step .num {
+            display: inline-block;
+            background: #116b4c;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 800;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            margin-bottom: 12px
+        }
+
+        .step h4 {
+            margin: 0 0 8px;
+            color: #116b4c;
+            font-size: 16px
+        }
+
+        .step p {
+            color: #687b75;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0
+        }
+
+        .quote-section {
+            background: #103f33;
+            color: #fff
+        }
+
+        .quote-section .sub {
+            color: #c9ddd6
+        }
+
+        .quote-wrapper {
+            background: #fff;
+            color: #18312b;
+            border-radius: 22px;
+            padding: 35px;
+            max-width: 640px;
+            margin: 0 auto;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2)
+        }
+
+        .quote-wrapper h3 {
+            color: #116b4c;
+            margin: 0 0 20px;
+            font-size: 24px
+        }
+
+        .quote-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px
+        }
+
+        .quote-form .full {
+            grid-column: 1 / -1
+        }
+
+        .quote-form input,
+        .quote-form select,
+        .quote-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bad5cb;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+            background: #fff
+        }
+
+        .quote-form input:focus,
+        .quote-form select:focus,
+        .quote-form textarea:focus {
+            outline: none;
+            border-color: #116b4c;
+            box-shadow: 0 0 0 2px rgba(17, 107, 76, 0.15)
+        }
+
+        .quote-form textarea {
+            resize: vertical;
+            min-height: 80px
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 10px;
+            background: #116b4c;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            cursor: pointer
+        }
+
+        .btn:hover {
+            background: #0b8a63
+        }
+
+        .btn.alt {
+            background: #fff;
+            color: #116b4c;
+            border: 1px solid #bad5cb
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 6px
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed
+        }
+
+        .success-box {
+            text-align: center;
+            background: #fff;
+            border-radius: 18px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 25px #1b43320d
+        }
+
+        .success-box h3 {
+            color: #116b4c;
+            margin-top: 0
+        }
+
+        .success-box a {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            background: #116b4c;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700
+        }
+
+        .coverage {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        .coverage .item {
+            background: #f4f8f6;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 15px
+        }
+
+        footer {
+            background: #0b2d25;
+            color: #c7d8d3;
+            padding: 35px 7%;
+            display: flex;
+            justify-content: space-between
+        }
+
+        @media(max-width:760px) {
+
+            .cards,
+            .steps,
+            .coverage,
+            .quote-form {
+                grid-template-columns: 1fr
+            }
+
+            .quote-form .full {
+                grid-column: 1
+            }
+
+            .page-header h1 {
+                font-size: 32px
+            }
+
+            nav .links {
+                display: none
+            }
+
+            footer {
+                display: block
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <nav>
+            <div class="logo">Fair<span>Stay</span></div>
+            <div class="links"><a href="index.html">Home</a><a href="index.html#services">Services</a><a
+                    href="#services">Packers & Movers</a><a href="index.html#contact">Contact</a></div>
+        </nav>
+        <div class="quote"><span>💡 No payment required until finalization</span></div>
+    </div>
+
+    <div class="page-header">
+        <span class="badge">🚚 Verified moving partners</span>
+        <h1>Packers & Movers</h1>
+        <p>Plan your household move with verified service support and clear booking steps. We handle everything from
+            packing to unpacking so you can settle into your new home with zero stress.</p>
+    </div>
+
+    <section id="services">
+        <h2>Complete moving services</h2>
+        <div class="sub">Every step of your relocation, covered under one roof.</div>
+        <div class="cards">
+            <div class="card">
+                <div class="icon">📦</div>
+                <h3>Professional Packing</h3>
+                <p>High-quality packing materials and trained professionals secure your belongings for safe transit.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🚛</div>
+                <h3>Safe Transportation</h3>
+                <p>Fleet of well-maintained vehicles with tracking and experienced drivers for local and intercity
+                    moves.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🏗️</div>
+                <h3>Loading & Unloading</h3>
+                <p>Skilled manpower handles heavy lifting, loading, and unloading with care at both ends.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🛋️</div>
+                <h3>Unpacking & Placement</h3>
+                <p>We unpack and place items exactly where you want them in your new home.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🛡️</div>
+                <h3>Insurance Coverage</h3>
+                <p>Optional transit insurance to protect your valuables during the move.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🗄️</div>
+                <h3>Storage Solutions</h3>
+                <p>Secure, short-term and long-term storage options if you need time between moves.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" style="padding-top:0">
+        <h2>How it works</h2>
+        <div class="sub">Four simple steps to a hassle-free move.</div>
+        <div class="steps">
+            <div class="step">
+                <div class="num">1</div>
+                <h4>Request a Quote</h4>
+                <p>Fill in your move details and contact information in the form below.</p>
+            </div>
+            <div class="step">
+                <div class="num">2</div>
+                <h4>Get Your Estimate</h4>
+                <p>Our team reviews your requirements and shares a transparent, no-obligation quote.</p>
+            </div>
+            <div class="step">
+                <div class="num">3</div>
+                <h4>Schedule the Move</h4>
+                <p>Pick a convenient date and confirm your booking with clear terms.</p>
+            </div>
+            <div class="step">
+                <div class="num">4</div>
+                <h4>Move Day</h4>
+                <p>Our crew handles everything — packing, loading, transport, and unloading.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section" id="quote">
+        <h2>Get a free moving quote</h2>
+        <div class="sub">Tell us about your move and we'll get back to you within 24 hours.</div>
+        <div class="quote-wrapper">
+            <h3>🚚 Request a Quote</h3>
+            <form id="moveForm" onsubmit="submitQuote(event)">
+                <div class="quote-form">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                    <input type="email" name="email" placeholder="Email ID" required>
+                    <select name="move_type" required>
+                        <option value="">Type of Move</option>
+                        <option>Local Move</option>
+                        <option>Intercity Move</option>
+                        <option>Office Relocation</option>
+                        <option>Vehicle Transportation</option>
+                    </select>
+                    <input type="text" name="from_city" placeholder="From City" required>
+                    <input type="text" name="to_city" placeholder="To City" required>
+                    <div class="full">
+                        <input type="date" name="move_date" required>
+                    </div>
+                    <div class="full">
+                        <textarea name="details"
+                            placeholder="Additional details (items, home size, special requirements...)"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn submit-btn" id="submitBtn">Get My Quote</button>
+            </form>
+            <div id="successBox" class="success-box" style="display:none">
+                <h3>✅ Quote Request Received!</h3>
+                <p>Thank you! Our team will contact you within 24 hours with a free estimate.</p>
+                <p style="font-size:18px"><b>Your Request ID: <span id="requestId"></span></b></p>
+                <a href="index.html">← Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding-top:0">
+        <h2>What's covered</h2>
+        <div class="sub">Our moving services include everything you see below at no extra cost.</div>
+        <div class="coverage">
+            <div class="item">✅ Free site survey & estimate</div>
+            <div class="item">✅ Trained & background-verified movers</div>
+            <div class="item">✅ Quality packing materials</div>
+            <div class="item">✅ Transit insurance option</div>
+            <div class="item">✅ Real-time move tracking</div>
+            <div class="item">✅ Dedicated move coordinator</div>
+        </div>
+    </section>
+
+    <footer><b>FairStay.co.in</b><span>Rental Agreements • Moving • Property</span></footer>
+
+    <script>
+        // Google Apps Script URL (same backend as other forms)
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpM2BZt_HoKPa9nwiQZnyZcNqqc7QkletgmHttC6Bopcg9MEuuwgSpvEIAkw4dV9uoXA/exec';
+
+        function submitQuote(e) {
+            e.preventDefault();
+            const form = document.getElementById('moveForm');
+            const data = new FormData(form);
+            const btn = document.getElementById('submitBtn');
+            btn.textContent = 'Submitting...';
+            btn.disabled = true;
+
+            var requestId = 'PM' + Date.now().toString(36).toUpperCase().slice(-8);
+            data.append('request_id', requestId);
+            data.append('service_type', 'Packers & Movers');
+
+            if (SCRIPT_URL === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                setTimeout(function () {
+                    form.style.display = 'none';
+                    document.getElementById('requestId').textContent = requestId;
+                    document.getElementById('successBox').style.display = 'block';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 800);
+                return;
+            }
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: data,
+                mode: 'no-cors'
+            }).then(function () {
+                form.style.display = 'none';
+                document.getElementById('requestId').textContent = requestId;
+                document.getElementById('successBox').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }).catch(function () {
+                alert('Something went wrong. Please try again.');
+                btn.textContent = 'Get My Quote';
+                btn.disabled = false;
+            });
+        }
+    </script>
+</body>
+
+</html>
