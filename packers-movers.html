@@ -199,35 +199,6 @@
             gap: 12px;
         }
 
-        .rating-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #ffffff;
-            padding: 6px 14px;
-            border-radius: 24px;
-            border: 1px solid var(--border-color);
-            width: fit-content;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .rating-chip .stars {
-            color: var(--accent);
-            font-weight: 800;
-            font-size: 14px;
-        }
-
-        .rating-chip span.score {
-            font-weight: 800;
-            color: var(--primary);
-            font-size: 15px;
-        }
-
-        .rating-chip span.reviews-count {
-            color: var(--text-muted);
-            font-size: 13px;
-        }
-
         .hero-title {
             font-size: 40px;
             font-weight: 800;
@@ -240,6 +211,28 @@
             font-size: 17px;
             color: var(--text-muted);
             line-height: 1.6;
+        }
+
+        .move-features {
+            list-style: none;
+            margin: 14px 0 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 18px;
+            max-width: 480px;
+        }
+
+        .move-features li {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #18312b;
+            box-shadow: var(--shadow-sm);
         }
 
         .protection-banner {
@@ -1061,25 +1054,15 @@
                 <!-- Left Column Content -->
                 <div class="hero-content">
                     <div class="hero-title-area">
-                        <div class="rating-chip">
-                            <span class="stars">★★★★★</span>
-                            <span class="score">4.8 / 5</span>
-                            <span class="reviews-count">(900,000+ Verified Moves)</span>
-                        </div>
                         <h1 class="hero-title">India's Largest Packers and Movers</h1>
-                        <p class="hero-subtitle">Top rated house shifting services in India with 100% Damage & Delay
-                            Protection. Any damage. Any delay. We pay.</p>
-                    </div>
-
-                    <!-- Protection Assurance Box -->
-                    <div class="protection-banner">
-                        <div class="protection-info">
-                            <div class="protection-icon">🛡️</div>
-                            <div class="protection-text">
-                                <h4>100% Guaranteed Protection Plan</h4>
-                                <p>Comprehensive insurance for household items, appliances & transit delays.</p>
-                            </div>
-                        </div>
+                        <p class="hero-subtitle">🏠 Stress-Free Moving Starts Here!</p>
+                        <ul class="move-features">
+                            <li>✔ Expert Packing</li>
+                            <li>✔ Safe &amp; Secure Transport</li>
+                            <li>✔ Doorstep Pickup &amp; Delivery</li>
+                            <li>✔ Affordable Pricing</li>
+                            <li>✔ Pan India Service</li>
+                        </ul>
                     </div>
 
                     <!-- Step-by-Step Packaging Preview -->
@@ -1285,97 +1268,6 @@
         </div>
     </section>
 
-    <!-- USPs & Awards Section -->
-    <section class="section-padding usp-section">
-        <div class="container">
-            <div class="usp-grid">
-                <div class="usp-item">
-                    <div class="usp-icon">🏆</div>
-                    <div class="usp-text">
-                        <h4>15 Lakh+ Happy Customers</h4>
-                        <p>Trusted across 100+ cities with 4.8 star customer satisfaction score.</p>
-                    </div>
-                </div>
-                <div class="usp-item">
-                    <div class="usp-icon">🛡️</div>
-                    <div class="usp-text">
-                        <h4>100% Protection Policy</h4>
-                        <p>Any damage or delay is completely covered under our safety guarantee.</p>
-                    </div>
-                </div>
-                <div class="usp-item">
-                    <div class="usp-icon">🎗️</div>
-                    <div class="usp-text">
-                        <h4>Industry Recognized</h4>
-                        <p>Winner of the CII Logistics Transformation & Supply Chain Excellence Award.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Recent Trips Ticker / Carousel -->
-    <section class="section-padding" style="background:#f7faf8;">
-        <div class="container">
-            <div class="section-header" style="text-align:left; margin-bottom: 24px;">
-                <h2 class="section-title">15 Lakh+ Trips Completed All Over India</h2>
-                <p class="section-subtitle">Real-time completed moves by FairStay verified logistics partners.</p>
-            </div>
-
-            <div class="trips-container">
-                <div class="trip-card">
-                    <div class="trip-badge-row">
-                        <span class="trip-rating">★ 5.0</span>
-                        <span class="trip-type">Within City</span>
-                    </div>
-                    <div class="customer-name">Uma Maheshwari</div>
-                    <div class="trip-date">Completed on 24 Feb</div>
-                    <div class="trip-route">📍 Koramangala, BLR</div>
-                </div>
-
-                <div class="trip-card">
-                    <div class="trip-badge-row">
-                        <span class="trip-rating">★ 5.0</span>
-                        <span class="trip-type">Between City</span>
-                    </div>
-                    <div class="customer-name">Bismi B A</div>
-                    <div class="trip-date">Completed on 25 Feb</div>
-                    <div class="trip-route">📍 Hyderabad ➔ Pune</div>
-                </div>
-
-                <div class="trip-card">
-                    <div class="trip-badge-row">
-                        <span class="trip-rating">★ 4.8</span>
-                        <span class="trip-type">Between City</span>
-                    </div>
-                    <div class="customer-name">Harshit Goel</div>
-                    <div class="trip-date">Completed on 21 Mar</div>
-                    <div class="trip-route">📍 Delhi ➔ Ajmer</div>
-                </div>
-
-                <div class="trip-card">
-                    <div class="trip-badge-row">
-                        <span class="trip-rating">★ 4.9</span>
-                        <span class="trip-type">Within City</span>
-                    </div>
-                    <div class="customer-name">Sid Patil</div>
-                    <div class="trip-date">Completed on 28 Feb</div>
-                    <div class="trip-route">📍 Bandra, Mumbai</div>
-                </div>
-
-                <div class="trip-card">
-                    <div class="trip-badge-row">
-                        <span class="trip-rating">★ 5.0</span>
-                        <span class="trip-type">Vehicle Shift</span>
-                    </div>
-                    <div class="customer-name">Mohit Yadav</div>
-                    <div class="trip-date">Completed on 01 Mar</div>
-                    <div class="trip-route">🚗 Bangalore ➔ Chennai</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Complete Moving Services Grid -->
     <section class="section-padding" style="background:#ffffff;">
         <div class="container">
@@ -1561,48 +1453,6 @@
                         </tr>
                     </table>
                     <div class="price-note">Dedicated vehicle transport trucks with door-to-door delivery across India.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Frequently Asked Questions -->
-    <section class="section-padding" id="faq" style="background:#f7faf8;">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Everything you need to know about booking FairStay Packers & Movers.</p>
-            </div>
-
-            <div class="faq-accordion">
-                <div class="faq-item">
-                    <div class="faq-q">How are packers and movers charges calculated?<span
-                            class="faq-toggle">+</span></div>
-                    <div class="faq-a">Charges primarily depend on the total volume/weight of goods, distance between pickup and drop points, quality of packing required, floor level, and accessibility to lifts.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-q">What is covered under the 100% Damage & Delay Protection?<span
-                            class="faq-toggle">+</span></div>
-                    <div class="faq-a">Our protection plan covers repair or replacement costs for items damaged during packing, loading, transit, or unloading. Additionally, if the move is delayed beyond the committed timeframe, financial compensation is reimbursed.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-q">Can I reschedule or cancel my shifting date?<span
-                            class="faq-toggle">+</span></div>
-                    <div class="faq-a">Yes! You can easily reschedule your move date up to 24 hours prior to the slot without any cancellation or penalty fee.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-q">Is dismantling and re-assembling of furniture included?<span
-                            class="faq-toggle">+</span></div>
-                    <div class="faq-a">Yes. Our crew handles the complete dismantling of beds, wardrobes, and TV units at your origin and re-assembles them at your destination home.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-q">How far in advance should I book my move?<span
-                            class="faq-toggle">+</span></div>
-                    <div class="faq-a">We recommend booking at least 2 to 4 days in advance to secure your preferred date and time slot, especially during weekends and month-end peak periods.</div>
                 </div>
             </div>
         </div>
