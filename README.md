@@ -10,6 +10,8 @@ Property services made simple — Rental agreements, packers & movers, and prope
 
 - `index.html` — Main landing page with hero section, services, pricing plans, and lead capture modal
 - `rental-details.html` — Comprehensive rental agreement form (Property, Owner, Tenant, Contract & Amenities)
+- `packers-movers.html` — Packers & movers booking page with quote widget
+- `find-property.html` — Property search & listings page (Buy • Sell • Rent)
 - `coming-soon.html` — Coming soon placeholder for upcoming services
 - `setup-google-sheet.txt` — Instructions for connecting the Google Sheet backend
 
