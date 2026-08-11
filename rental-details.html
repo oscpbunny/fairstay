@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -1578,16 +1578,12 @@
                 document.getElementById('draftChoiceSection').style.display = 'none';
                 document.getElementById('rentalDetailsForm').style.display = 'none';
                 form.style.display = 'none';
-                document.getElementById('successCustomerId').textContent = customerId;
-                document.getElementById('successBox').querySelector('h2').textContent = 'Rental Details Submitted Successfully!';
-                document.getElementById('successBox').querySelector('p').innerHTML = 'Thank you! Your rental agreement details have been recorded.';
-                // Show payment breakdown using the rent + deposit the customer entered in the form
+                // Only the payment breakdown is shown after a successful submission
                 var pbRentEl = form.elements['rent_amount'];
                 var pbDepEl = form.elements['deposit_amount'];
                 if (pbRentEl && pbRentEl.value) { document.getElementById('calcRent').value = pbRentEl.value; }
                 if (pbDepEl && pbDepEl.value) { document.getElementById('calcDeposit').value = pbDepEl.value; }
                 showPaymentBreakdown();
-                document.getElementById('successBox').style.display = 'block';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 

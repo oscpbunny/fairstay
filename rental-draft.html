@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -1324,9 +1324,7 @@
                 setTimeout(function () {
                     form.style.display = 'none';
                     document.getElementById('draftChoiceSection').style.display = 'none';
-                    document.getElementById('successCustomerId').textContent = customerId;
-                    document.getElementById('successBox').style.display = 'block';
-                    // Show payment breakdown using the rent + deposit the customer entered in the form
+                    // Only the payment breakdown is shown after a successful submission
                     var pbRentEl = form.elements['rent_amount'];
                     var pbDepEl = form.elements['deposit_amount'];
                     if (pbRentEl && pbRentEl.value) { document.getElementById('calcRent').value = pbRentEl.value; }
@@ -1339,9 +1337,7 @@
             fetch(SCRIPT_URL, { method: 'POST', body: data, mode: 'no-cors' }).then(function () {
                 form.style.display = 'none';
                 document.getElementById('draftChoiceSection').style.display = 'none';
-                document.getElementById('successCustomerId').textContent = customerId;
-                document.getElementById('successBox').style.display = 'block';
-                // Show payment breakdown using the rent + deposit the customer entered in the form
+                // Only the payment breakdown is shown after a successful submission
                 var pbRentEl = form.elements['rent_amount'];
                 var pbDepEl = form.elements['deposit_amount'];
                 if (pbRentEl && pbRentEl.value) { document.getElementById('calcRent').value = pbRentEl.value; }
