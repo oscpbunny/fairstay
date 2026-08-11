@@ -497,8 +497,8 @@
             <div class="links"><a href="#services">Services</a><a href="#agreements">Rental Agreement</a><a
                     href="find-property.html">Property</a><a href="#contact">Contact</a>
                 <div class="user-menu" id="userMenu" style="display:none">
-                    <div class="avatar" id="avatarCircle" onclick="toggleBookings()">U</div>
-                    <span class="avatar-name" id="avatarName"></span>
+                    <div class="avatar" id="avatarCircle" onclick="toggleBookings()">👤</div>
+                    <span class="avatar-name" id="avatarName">Guest</span>
                     <div class="bookings-dropdown" id="bookingsDropdown" onclick="event.stopPropagation()">
                         <div class="bookings-head">📋 My Booking</div>
                         <div id="bookingsList"></div>
@@ -752,13 +752,18 @@
         function renderUserMenu() {
             var menu = document.getElementById('userMenu');
             if (!menu) { return; }
-            if (!hasSavedDetails()) { menu.style.display = 'none'; return; }
+            // Always show the avatar; fill with the customer's initial/name once logged in
             menu.style.display = 'inline-flex';
-            var name = (localStorage.getItem('fs_name') || 'User').trim();
-            var first = name.charAt(0).toUpperCase() || 'U';
-            var firstName = name.split(/\s+/)[0] || 'User';
-            document.getElementById('avatarCircle').textContent = first;
-            document.getElementById('avatarName').textContent = firstName;
+            var name = (localStorage.getItem('fs_name') || '').trim();
+            if (name) {
+                var first = name.charAt(0).toUpperCase();
+                var firstName = name.split(/\s+/)[0];
+                document.getElementById('avatarCircle').textContent = first;
+                document.getElementById('avatarName').textContent = firstName;
+            } else {
+                document.getElementById('avatarCircle').textContent = '👤';
+                document.getElementById('avatarName').textContent = 'Guest';
+            }
             renderBookings();
         }
 
