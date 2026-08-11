@@ -731,6 +731,16 @@
         }
 
         // ---- User avatar + My Booking ----
+        function labelForBooking() {
+            var target = document.getElementById('targetInput').value;
+            var plan = document.getElementById('planInput').value;
+            if (target === 'rental-details.html') { return plan ? ('Rental Agreement — ' + plan + ' Plan') : 'Rental Agreement'; }
+            if (target === 'packers-movers.html') { return 'Book Packers & Movers'; }
+            if (target === 'find-property.html') { return 'Find a Property'; }
+            if (target === 'list-property.html') { return 'List Your Property'; }
+            return 'Service Request';
+        }
+
         function recordBooking(label) {
             try {
                 var list = [];
@@ -802,7 +812,6 @@
             document.getElementById('planInput').value = planName;
             document.getElementById('targetInput').value = 'rental-details.html';
             setCityOptions(KA_CITIES);
-            recordBooking('Rental Agreement — ' + planName + ' Plan');
             if (hasSavedDetails()) { goDirect('rental-details.html'); return; }
             showModal();
             prefillForm();
@@ -815,7 +824,6 @@
             document.getElementById('planInput').value = '';
             document.getElementById('targetInput').value = targetPage;
             setCityOptions(serviceName === 'Rental Agreement' ? KA_CITIES : ALL_CITIES);
-            recordBooking(serviceName);
             if (hasSavedDetails()) { goDirect(targetPage); return; }
             showModal();
             prefillForm();
@@ -861,6 +869,7 @@
 
             if (SCRIPT_URL === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
                 setTimeout(function () {
+                    recordBooking(labelForBooking());
                     window.location.href = redirectUrl;
                 }, 800);
                 return;
@@ -871,6 +880,7 @@
                 body: data,
                 mode: 'no-cors'
             }).then(function () {
+                recordBooking(labelForBooking());
                 window.location.href = redirectUrl;
             }).catch(function () {
                 alert('Something went wrong. Please try again.');
