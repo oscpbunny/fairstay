@@ -293,7 +293,148 @@
             color: #c7d8d3;
             padding: 35px 7%;
             display: flex;
-            justify-content: space-between
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px
+        }
+
+        .f-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 13px
+        }
+
+        .f-contact a {
+            color: #c7d8d3;
+            text-decoration: none
+        }
+
+        .f-contact a:hover {
+            color: #e3a52d
+        }
+
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            margin: 24px 0 14px
+        }
+
+        .contact-details .c-item {
+            background: #fff;
+            border: 2px solid #ead39a;
+            border-radius: 14px;
+            padding: 14px 20px;
+            text-align: center;
+            min-width: 180px
+        }
+
+        .contact-details .c-icon {
+            font-size: 24px
+        }
+
+        .contact-details b {
+            display: block;
+            color: #116b4c;
+            margin: 6px 0 4px;
+            font-size: 14px
+        }
+
+        .contact-details a {
+            color: #18312b;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 14px
+        }
+
+        .contact-details a:hover {
+            color: #116b4c
+        }
+
+        .user-menu {
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 22px;
+            cursor: pointer
+        }
+
+        .avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #116b4c, #0b8a63);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            border: 2px solid #e3a52d
+        }
+
+        .avatar-name {
+            font-size: 12px;
+            color: #314b44;
+            font-weight: 700;
+            margin-top: 4px;
+            max-width: 70px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
+
+        .bookings-dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 12px);
+            right: 0;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(22, 107, 76, 0.18);
+            width: 250px;
+            padding: 8px;
+            z-index: 200
+        }
+
+        .bookings-head {
+            font-weight: 800;
+            color: #116b4c;
+            padding: 10px 12px 6px;
+            border-bottom: 1px solid #eef5f2
+        }
+
+        .bk-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 10px
+        }
+
+        .bk-item:hover {
+            background: #f4f8f6
+        }
+
+        .bk-label {
+            font-weight: 700;
+            color: #18312b;
+            font-size: 13px
+        }
+
+        .bk-date {
+            color: #8aa19a;
+            font-size: 11px;
+            margin-top: 2px
+        }
+
+        .bk-empty {
+            padding: 14px 12px;
+            color: #8aa19a;
+            font-size: 13px
         }
 
         @keyframes blink {
@@ -354,7 +495,16 @@
         <nav>
             <a href="index.html" class="logo" style="text-decoration:none">Fair<span>Stay</span>.co.in</a>
             <div class="links"><a href="#services">Services</a><a href="#agreements">Rental Agreement</a><a
-                    href="find-property.html">Property</a><a href="#contact">Contact</a></div>
+                    href="find-property.html">Property</a><a href="#contact">Contact</a>
+                <div class="user-menu" id="userMenu" style="display:none">
+                    <div class="avatar" id="avatarCircle" onclick="toggleBookings()">U</div>
+                    <span class="avatar-name" id="avatarName"></span>
+                    <div class="bookings-dropdown" id="bookingsDropdown" onclick="event.stopPropagation()">
+                        <div class="bookings-head">📋 My Booking</div>
+                        <div id="bookingsList"></div>
+                    </div>
+                </div>
+            </div>
         </nav>
         <div class="quote"><span>💡 No payment required until finalization</span></div>
     </div>
@@ -368,13 +518,13 @@
         </div>
         <div class="panel">
             <h3>What do you need today?</h3>
-            <div class="quick" onclick="window.location.href='#agreements'">📄 Create a
+            <div class="quick" onclick="openService('Rental Agreement','rental-details.html')">📄 Create a
                 Rental Agreement</div>
-            <div class="quick" onclick="window.location.href='packers-movers.html'">🚚 Book
+            <div class="quick" onclick="openService('Book Packers & Movers','packers-movers.html')">🚚 Book
                 Packers & Movers</div>
-            <div class="quick" onclick="window.location.href='find-property.html'">🏠 Find a
+            <div class="quick" onclick="openService('Find a Property','find-property.html')">🏠 Find a
                 Property</div>
-            <div class="quick" onclick="window.location.href='list-property.html'">🏷️ List
+            <div class="quick" onclick="openService('List Your Property','list-property.html')">🏷️ List
                 Your Property</div>
         </div>
     </header>
@@ -386,19 +536,22 @@
                 <div class="icon">📄</div>
                 <h3>Rental Agreement</h3>
                 <p>Create your rental agreement with simple online details and convenient service options.</p><a
-                    href="#agreements">Get started →</a>
+                    href="javascript:void(0)" onclick="openService('Rental Agreement','rental-details.html')">Get
+                    started →</a>
             </div>
             <div class="card">
                 <div class="icon">🚚</div>
                 <h3>Packers & Movers</h3>
                 <p>Plan your household move with verified service support and clear booking steps.</p><a
-                    href="packers-movers.html">Get moving →</a>
+                    href="javascript:void(0)" onclick="openService('Book Packers & Movers','packers-movers.html')">Get
+                    moving →</a>
             </div>
             <div class="card" id="property">
                 <div class="icon">🏘️</div>
                 <h3>Buy • Sell • Rent</h3>
                 <p>Discover properties or list yours for buyers and tenants on FairStay.</p><a
-                    href="find-property.html">Explore property →</a>
+                    href="javascript:void(0)" onclick="openService('Find a Property','find-property.html')">Explore
+                    property →</a>
             </div>
         </div>
     </section>
@@ -432,20 +585,38 @@
     </section>
     <div class="cta" id="contact">
         <h2>One platform. Less property hassle.</h2>
-        <p>This is a demo experience for FairStay. Production booking, payments, login and live listings can be
-            connected by your developer.</p><a class="btn" href="#">Get Started</a>
+        <div class="contact-details">
+            <div class="c-item"><div class="c-icon">🛟</div><b>Help &amp; Support</b><a
+                    href="mailto:support@fairstay.co.in">support@fairstay.co.in</a></div>
+            <div class="c-item"><div class="c-icon">🛒</div><b>Sales Support</b><a
+                    href="mailto:salesinfo@fairstay.co.in">salesinfo@fairstay.co.in</a></div>
+            <div class="c-item"><div class="c-icon">💬</div><b>WhatsApp Support</b><a href="https://wa.me/917411119567"
+                    target="_blank" rel="noopener">7411 119 567</a></div>
+        </div>
+        <a class="btn" href="#">Get Started</a>
     </div>
-    <footer><b>FairStay.co.in</b><span>Rental Agreements • Moving • Property</span></footer>
+    <footer>
+        <div>
+            <b>FairStay.co.in</b>
+            <span>Rental Agreements • Moving • Property</span>
+        </div>
+        <div class="f-contact">
+            <a href="mailto:support@fairstay.co.in">🛟 Help: support@fairstay.co.in</a>
+            <a href="mailto:salesinfo@fairstay.co.in">🛒 Sales: salesinfo@fairstay.co.in</a>
+            <a href="https://wa.me/917411119567" target="_blank" rel="noopener">💬 WhatsApp: 7411119567</a>
+        </div>
+    </footer>
 
     <div id="modal" class="modal-overlay" style="display:none">
         <div class="modal">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h3>Get Started with <span id="selectedPlan">Standard</span> Plan</h3>
+            <h3>Get Started<span id="planLabel"></span></h3>
+            <p id="serviceLabel" style="margin:0 0 16px;color:#667b75;font-size:14px"></p>
             <form id="leadForm" onsubmit="submitForm(event)">
                 <input type="text" name="name" placeholder="Full Name" required>
                 <input type="tel" name="phone" placeholder="Phone Number" required>
                 <input type="email" name="email" placeholder="Email ID" required>
-                <select name="city" required>
+                <select name="city" id="citySelect" required>
                     <option value="">Select City</option>
                     <option>Bangalore</option>
                     <option>Mumbai</option>
@@ -477,6 +648,7 @@
                     <option>Other</option>
                 </select>
                 <input type="hidden" name="plan" id="planInput">
+                <input type="hidden" name="target" id="targetInput" value="rental-details.html">
                 <button type="submit" class="btn">Submit</button>
             </form>
             <div id="successMsg" class="success" style="display:none">
@@ -488,12 +660,160 @@
     <script>
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpM2BZt_HoKPa9nwiQZnyZcNqqc7QkletgmHttC6Bopcg9MEuuwgSpvEIAkw4dV9uoXA/exec';
 
-        function openModal(planName) {
-            document.getElementById('selectedPlan').textContent = planName;
-            document.getElementById('planInput').value = planName;
+        // ---- City list: Karnataka-only for Rental Agreement, full list for other services ----
+        var ALL_CITIES = ['Bangalore', 'Mumbai', 'Delhi', 'Hyderabad', 'Chennai', 'Kolkata', 'Pune', 'Ahmedabad',
+            'Jaipur', 'Surat', 'Lucknow', 'Kanpur', 'Nagpur', 'Indore', 'Bhopal', 'Patna', 'Vadodara', 'Ghaziabad',
+            'Ludhiana', 'Agra', 'Nashik', 'Faridabad', 'Meerut', 'Rajkot', 'Kochi', 'Coimbatore', 'Visakhapatnam', 'Other'
+        ];
+        var KA_CITIES = ['Bangalore'];
+
+        function setCityOptions(cities) {
+            var sel = document.getElementById('citySelect');
+            if (!sel) { return; }
+            var current = sel.value;
+            var html = '<option value="">Select City</option>';
+            cities.forEach(function (c) {
+                html += '<option' + (c === current ? ' selected' : '') + '>' + c + '</option>';
+            });
+            sel.innerHTML = html;
+            try {
+                sel.value = current;
+            } catch (err) { /* ignore */ }
+        }
+
+        function prefillForm() {
+            try {
+                var n = localStorage.getItem('fs_name'),
+                    p = localStorage.getItem('fs_phone'),
+                    e = localStorage.getItem('fs_email'),
+                    c = localStorage.getItem('fs_city');
+                if (n) { document.querySelector('#leadForm input[name="name"]').value = n; }
+                if (p) { document.querySelector('#leadForm input[name="phone"]').value = p; }
+                if (e) { document.querySelector('#leadForm input[name="email"]').value = e; }
+                if (c) { document.querySelector('#leadForm select[name="city"]').value = c; }
+            } catch (err) { /* ignore */ }
+        }
+
+        function hasSavedDetails() {
+            try {
+                return !!(localStorage.getItem('fs_name') && localStorage.getItem('fs_phone') &&
+                    localStorage.getItem('fs_email') && localStorage.getItem('fs_city'));
+            } catch (err) { return false; }
+        }
+
+        function showModal() {
             document.getElementById('modal').style.display = 'flex';
             document.getElementById('successMsg').style.display = 'none';
             document.getElementById('leadForm').style.display = 'flex';
+        }
+
+        // Once details are saved, skip the form and go straight to the selected service
+        function goDirect(targetPage) {
+            try {
+                var name = localStorage.getItem('fs_name') || '',
+                    phone = localStorage.getItem('fs_phone') || '',
+                    email = localStorage.getItem('fs_email') || '',
+                    city = localStorage.getItem('fs_city') || '',
+                    cid = localStorage.getItem('fs_customer_id') ||
+                    ('FS' + Date.now().toString(36).toUpperCase().slice(-8));
+                var plan = document.getElementById('planInput').value;
+                var url = targetPage + '?name=' + encodeURIComponent(name) +
+                    '&phone=' + encodeURIComponent(phone) +
+                    '&email=' + encodeURIComponent(email) +
+                    '&city=' + encodeURIComponent(city) +
+                    '&customer_id=' + encodeURIComponent(cid);
+                if (plan) { url += '&plan=' + encodeURIComponent(plan); }
+                window.location.href = url;
+            } catch (err) {
+                showModal();
+                prefillForm();
+            }
+        }
+
+        // ---- User avatar + My Booking ----
+        function recordBooking(label) {
+            try {
+                var list = [];
+                try { list = JSON.parse(localStorage.getItem('fs_bookings') || '[]'); } catch (e) { list = []; }
+                var exists = list.some(function (b) { return b.label === label; });
+                if (!exists) {
+                    var d = new Date();
+                    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                    list.push({
+                        label: label,
+                        date: d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear()
+                    });
+                    localStorage.setItem('fs_bookings', JSON.stringify(list));
+                }
+                renderBookings();
+            } catch (err) { /* ignore */ }
+        }
+
+        function renderUserMenu() {
+            var menu = document.getElementById('userMenu');
+            if (!menu) { return; }
+            if (!hasSavedDetails()) { menu.style.display = 'none'; return; }
+            menu.style.display = 'inline-flex';
+            var name = (localStorage.getItem('fs_name') || 'User').trim();
+            var first = name.charAt(0).toUpperCase() || 'U';
+            var firstName = name.split(/\s+/)[0] || 'User';
+            document.getElementById('avatarCircle').textContent = first;
+            document.getElementById('avatarName').textContent = firstName;
+            renderBookings();
+        }
+
+        function renderBookings() {
+            var list = [];
+            try { list = JSON.parse(localStorage.getItem('fs_bookings') || '[]'); } catch (e) { list = []; }
+            var el = document.getElementById('bookingsList');
+            if (!el) { return; }
+            if (!list.length) {
+                el.innerHTML = '<div class="bk-empty">No bookings yet.<br>Choose a service to get started.</div>';
+                return;
+            }
+            el.innerHTML = list.map(function (b) {
+                return '<div class="bk-item"><span>🛒</span><div><div class="bk-label">' + b.label +
+                    '</div><div class="bk-date">' + b.date + '</div></div></div>';
+            }).join('');
+        }
+
+        function toggleBookings() {
+            var dd = document.getElementById('bookingsDropdown');
+            dd.style.display = (dd.style.display === 'block') ? 'none' : 'block';
+        }
+
+        document.addEventListener('click', function (ev) {
+            var menu = document.getElementById('userMenu');
+            if (menu && !menu.contains(ev.target)) {
+                document.getElementById('bookingsDropdown').style.display = 'none';
+            }
+        });
+
+        renderUserMenu();
+
+        function openModal(planName) {
+            document.getElementById('planLabel').textContent = ' with ' + planName + ' Plan';
+            document.getElementById('serviceLabel').textContent = 'Create your ' + planName + ' rental agreement';
+            document.getElementById('planInput').value = planName;
+            document.getElementById('targetInput').value = 'rental-details.html';
+            setCityOptions(KA_CITIES);
+            recordBooking('Rental Agreement — ' + planName + ' Plan');
+            if (hasSavedDetails()) { goDirect('rental-details.html'); return; }
+            showModal();
+            prefillForm();
+        }
+
+        function openService(serviceName, targetPage) {
+            document.getElementById('planLabel').textContent = '';
+            document.getElementById('serviceLabel').textContent = 'You selected: ' + serviceName +
+                ' — update your details below to continue';
+            document.getElementById('planInput').value = '';
+            document.getElementById('targetInput').value = targetPage;
+            setCityOptions(serviceName === 'Rental Agreement' ? KA_CITIES : ALL_CITIES);
+            recordBooking(serviceName);
+            if (hasSavedDetails()) { goDirect(targetPage); return; }
+            showModal();
+            prefillForm();
         }
 
         function closeModal() {
@@ -516,12 +836,23 @@
             var email = data.get('email');
             var city = data.get('city');
             var plan = data.get('plan');
-            var redirectUrl = 'rental-details.html?name=' + encodeURIComponent(name) +
+            var target = data.get('target') || 'rental-details.html';
+
+            // Save details so the customer can update them next time
+            try {
+                localStorage.setItem('fs_name', name);
+                localStorage.setItem('fs_phone', phone);
+                localStorage.setItem('fs_email', email);
+                localStorage.setItem('fs_city', city);
+                localStorage.setItem('fs_customer_id', customerId);
+            } catch (err) { /* ignore */ }
+
+            var redirectUrl = target + '?name=' + encodeURIComponent(name) +
                 '&phone=' + encodeURIComponent(phone) +
                 '&email=' + encodeURIComponent(email) +
                 '&city=' + encodeURIComponent(city) +
-                '&plan=' + encodeURIComponent(plan) +
                 '&customer_id=' + encodeURIComponent(customerId);
+            if (plan) { redirectUrl += '&plan=' + encodeURIComponent(plan); }
 
             if (SCRIPT_URL === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
                 setTimeout(function () {
