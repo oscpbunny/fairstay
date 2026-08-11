@@ -189,6 +189,18 @@
             color: #116b4c
         }
 
+        .price h3 {
+            font-size: 18px;
+            margin: 0 0 6px
+        }
+
+        .price .plan-tagline {
+            font-weight: 700;
+            color: #116b4c;
+            margin: 2px 0 10px;
+            font-size: 14px
+        }
+
         .note {
             color: #c9ddd6;
             font-size: 14px;
@@ -560,28 +572,29 @@
         <div class="sub">Choose based on how quickly you need the service.</div>
         <div class="prices">
             <div class="price">
-                <h3>Standard</h3><strong>Free</strong>
-                <p>4–5 day service option</p>
-                <p>Softcopy within 24 hrs</p>
-                <p>Hard copy within 3-4 days</p>
+                <h3>STANDARD — ₹149</h3>
+                <p class="plan-tagline">Simple &amp; Affordable</p>
+                <p>Soft copy within 2 hours</p>
+                <p>Digital processing</p>
                 <button class="plan-btn" onclick="openModal('Standard')">Select Plan</button>
             </div>
             <div class="price">
-                <h3>Premium</h3><strong>₹99</strong>
-                <p>Priority next-day processing</p>
+                <h3>PREMIUM — ₹249 ⭐ Most Popular</h3>
+                <p class="plan-tagline">Priority Processing</p>
                 <p>Soft copy within 1 hour</p>
-                <p>Hard copy within 3-4 days</p>
+                <p>Hard copy within 3–4 days</p>
                 <button class="plan-btn" onclick="openModal('Premium')">Select Plan</button>
             </div>
             <div class="price">
-                <h3>Luxury</h3><strong>₹399</strong>
-                <p>Fastest processing option</p>
+                <h3>LUXURY — ₹399</h3>
+                <p class="plan-tagline">Fastest Processing</p>
                 <p>Soft copy within 1 hour</p>
-                <p>Hard copy within 3-4 days</p>
+                <p>Express processing</p>
+                <p>Hard copy within 24H</p>
                 <button class="plan-btn" onclick="openModal('Luxury')">Select Plan</button>
             </div>
         </div>
-        <p class="note">* Processing charges ₹299 and stamp paper charges additional.</p>
+        <p class="note">* Processing charges ₹399 and stamp paper charges additional.</p>
     </section>
     <div class="cta" id="contact">
         <h2>One platform. Less property hassle.</h2>
