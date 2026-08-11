@@ -1205,7 +1205,7 @@
             <div class="price-item">
                 <div class="pb-left">
                     Stamp Paper Charges
-                    <div class="pb-hint">0.5% on (Rent × 11 months + Deposit), min ₹500</div>
+                    <div class="pb-hint">0.5% on (Rent × 11 months + Deposit), max ₹500</div>
                 </div>
                 <div class="pb-right" id="pbStamp">—</div>
             </div>
@@ -1235,7 +1235,7 @@
                 <div class="pb-right" id="pbTotal">₹548</div>
             </div>
 
-            <p class="pb-note">* Processing charges of ₹399 and plan pack charges are fixed. Stamp paper charges are calculated at 0.5% of the agreement value (Rent × 11 months + Deposit), subject to a minimum stamp paper value of ₹500. Final stamp duty may vary as per government rules.</p>
+            <p class="pb-note">* Processing charges of ₹399 and plan pack charges are fixed. Stamp paper charges are calculated at 0.5% of the agreement value (Rent × 11 months + Deposit), subject to a maximum stamp paper value of ₹500. Final stamp duty may vary as per government rules.</p>
         </div>
     </div><!-- /form-wrap -->
 
@@ -1330,7 +1330,7 @@
         var PROCESSING_CHARGE = 399;
         var AGREEMENT_MONTHS = 11;
         var STAMP_PERCENT = 0.5; // percent of agreement value
-        var MIN_STAMP = 500; // minimum stamp paper value in INR, applied when 0.5% computes below it
+        var MAX_STAMP = 500; // maximum stamp duty cap in INR, applied when 0.5% computes above it
         var PACK_PRICES = { standard: 149, premium: 249, luxury: 399 };
 
         function getPackCharge() {
@@ -1351,7 +1351,7 @@
             var dep = parseFloat(depEl.value) || 0;
             var value = rent * AGREEMENT_MONTHS + dep;
             var rawStamp = value * (STAMP_PERCENT / 100);
-            var stamp = Math.max(rawStamp, MIN_STAMP);
+            var stamp = Math.min(rawStamp, MAX_STAMP);
             var pack = getPackCharge();
             var total = PROCESSING_CHARGE + stamp + pack;
 
@@ -1363,7 +1363,7 @@
 
             document.getElementById('calcDetail').innerHTML = 'Formula: (' +
                 fmtINR(rent) + ' × 11 + ' + fmtINR(dep) + ') × 0.5% = ' + fmtINR(rawStamp) +
-                (rawStamp < MIN_STAMP ? ' → minimum stamp paper of ₹' + fmtINR(MIN_STAMP) + ' applied' : '') +
+                (rawStamp > MAX_STAMP ? ' → maximum stamp duty of ₹' + fmtINR(MAX_STAMP) + ' applied' : '') +
                 ' = <b>' + fmtINR(stamp) + '</b>';
         }
 
