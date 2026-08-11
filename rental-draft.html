@@ -1058,13 +1058,12 @@
             <h2>✅ Thank You!</h2>
             <p>Your request has been received successfully.</p>
             <p style="font-size:18px"><b>Your Customer ID: <span id="successCustomerId"></span></b></p>
-            <p>Please save this ID for future reference. Our team will process your request and get back to you shortly.
-            </p>
+            <p>Please save this ID for future reference.</p>
             <a href="index.html">← Back to Home</a>
         </div>
         </div>
 
-        <!-- Payment breakdown (shown for customers with their own draft) -->
+        <!-- Payment breakdown (shown after successful submission) -->
         <div id="paymentBox" class="payment-breakdown" style="display:none">
             <h3>💳 Payment Breakdown</h3>
 
@@ -1076,7 +1075,7 @@
             <div class="price-item">
                 <div class="pb-left">
                     Stamp Paper Charges
-                    <div class="pb-hint">0.5% on (Rent × 11 months + Deposit)</div>
+                    <div class="pb-hint">0.5% on (Rent × 11 months + Deposit), min ₹500</div>
                 </div>
                 <div class="pb-right" id="pbStamp">—</div>
             </div>
@@ -1106,7 +1105,7 @@
                 <div class="pb-right" id="pbTotal">₹548</div>
             </div>
 
-            <p class="pb-note">* Processing charges of ₹399 and plan pack charges are fixed. Stamp paper charges are calculated at 0.5% of the agreement value (Rent × 11 months + Deposit). Final stamp duty may vary as per government rules.</p>
+            <p class="pb-note">* Processing charges of ₹399 and plan pack charges are fixed. Stamp paper charges are calculated at 0.5% of the agreement value (Rent × 11 months + Deposit), subject to a minimum stamp paper value of ₹500. Final stamp duty may vary as per government rules.</p>
         </div>
     </div><!-- /form-wrap -->
 
@@ -1208,10 +1207,11 @@
         });
 
 
-        // ===== Payment breakdown for customers with their own draft =====
+        // ===== Payment breakdown (shown after successful submission) =====
         var PROCESSING_CHARGE = 399;
         var AGREEMENT_MONTHS = 11;
         var STAMP_PERCENT = 0.5; // percent of agreement value
+        var MIN_STAMP = 500; // minimum stamp paper value in INR, applied when 0.5% computes below it
         var PACK_PRICES = { standard: 149, premium: 249, luxury: 399 };
 
         function getPackCharge() {
@@ -1231,7 +1231,8 @@
             var rent = parseFloat(rentEl.value) || 0;
             var dep = parseFloat(depEl.value) || 0;
             var value = rent * AGREEMENT_MONTHS + dep;
-            var stamp = value * (STAMP_PERCENT / 100);
+            var rawStamp = value * (STAMP_PERCENT / 100);
+            var stamp = Math.max(rawStamp, MIN_STAMP);
             var pack = getPackCharge();
             var total = PROCESSING_CHARGE + stamp + pack;
 
@@ -1241,8 +1242,10 @@
             document.getElementById('pbPack').textContent = fmtINR(pack);
             document.getElementById('pbTotal').textContent = fmtINR(total);
 
-            document.getElementById('calcDetail').innerHTML = 'Formula: (₹' +
-                fmtINR(rent) + ' × 11 + ₹' + fmtINR(dep) + ') × 0.5% = <b>' + fmtINR(stamp) + '</b>';
+            document.getElementById('calcDetail').innerHTML = 'Formula: (' +
+                fmtINR(rent) + ' × 11 + ' + fmtINR(dep) + ') × 0.5% = ' + fmtINR(rawStamp) +
+                (rawStamp < MIN_STAMP ? ' → minimum stamp paper of ₹' + fmtINR(MIN_STAMP) + ' applied' : '') +
+                ' = <b>' + fmtINR(stamp) + '</b>';
         }
 
         function showPaymentBreakdown() {
@@ -1281,7 +1284,7 @@
                     document.getElementById('rentalDetailsForm').style.display = 'none';
                     document.getElementById('successCustomerId').textContent = customerId;
                     document.getElementById('successBox').querySelector('h2').textContent = 'Draft Uploaded Successfully!';
-                    document.getElementById('successBox').querySelector('p').innerHTML = 'Thank you! Your draft has been received. Our team will review it and get back to you.';
+                    document.getElementById('successBox').querySelector('p').innerHTML = 'Thank you! Your draft has been received.';
                     document.getElementById('successBox').style.display = 'block';
                     showPaymentBreakdown();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1293,7 +1296,7 @@
                 document.getElementById('rentalDetailsForm').style.display = 'none';
                 document.getElementById('successCustomerId').textContent = customerId;
                 document.getElementById('successBox').querySelector('h2').textContent = 'Draft Uploaded Successfully!';
-                document.getElementById('successBox').querySelector('p').innerHTML = 'Thank you! Your draft has been received. Our team will review it and get back to you.';
+                document.getElementById('successBox').querySelector('p').innerHTML = 'Thank you! Your draft has been received.';
                 document.getElementById('successBox').style.display = 'block';
                 showPaymentBreakdown();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1323,6 +1326,12 @@
                     document.getElementById('draftChoiceSection').style.display = 'none';
                     document.getElementById('successCustomerId').textContent = customerId;
                     document.getElementById('successBox').style.display = 'block';
+                    // Show payment breakdown using the rent + deposit the customer entered in the form
+                    var pbRentEl = form.elements['rent_amount'];
+                    var pbDepEl = form.elements['deposit_amount'];
+                    if (pbRentEl && pbRentEl.value) { document.getElementById('calcRent').value = pbRentEl.value; }
+                    if (pbDepEl && pbDepEl.value) { document.getElementById('calcDeposit').value = pbDepEl.value; }
+                    showPaymentBreakdown();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 1200);
                 return;
@@ -1332,6 +1341,12 @@
                 document.getElementById('draftChoiceSection').style.display = 'none';
                 document.getElementById('successCustomerId').textContent = customerId;
                 document.getElementById('successBox').style.display = 'block';
+                // Show payment breakdown using the rent + deposit the customer entered in the form
+                var pbRentEl = form.elements['rent_amount'];
+                var pbDepEl = form.elements['deposit_amount'];
+                if (pbRentEl && pbRentEl.value) { document.getElementById('calcRent').value = pbRentEl.value; }
+                if (pbDepEl && pbDepEl.value) { document.getElementById('calcDeposit').value = pbDepEl.value; }
+                showPaymentBreakdown();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }).catch(function () {
                 alert('Something went wrong. Please try again.');
