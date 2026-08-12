@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -707,6 +707,7 @@
         .preview-doc-icon a { display: inline-block; margin-top: 12px; padding: 8px 20px; background: #116b4c; color: #fff; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 700; }
         .preview-doc-icon a:hover { background: #0b8a63 }
     </style>
+<script src="fs-tracker.js?v=2"></script>
 </head>
 
 <body>
@@ -1122,7 +1123,7 @@
     </footer>
 
     <script>
-        var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpM2BZt_HoKPa9nwiQZnyZcNqqc7QkletgmHttC6Bopcg9MEuuwgSpvEIAkw4dV9uoXA/exec';
+        var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxl9qoNVHnBDyan_k1-8tv1Z9r3zd-AJLCo6IOWvctUSDl83IzPlsQMLwHGcnr9W8vO/exec';
         var params = new URLSearchParams(window.location.search);
         var customerName = params.get('name') || '';
         var customerPhone = params.get('phone') || '';
@@ -1253,6 +1254,7 @@
             if (!pb) { return; }
             pb.style.display = 'block';
             updatePaymentBreakdown();
+            fsInitConfirmPayBox();
         }
 
         document.getElementById('calcRent').addEventListener('input', updatePaymentBreakdown);
@@ -1263,23 +1265,43 @@
             var fileInput = document.getElementById('draftFile');
             if (!fileInput.files || fileInput.files.length === 0) { alert('Please select a file first.'); return; }
             var file = fileInput.files[0];
-            var validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-            if (validTypes.indexOf(file.type) === -1) { alert('Please upload a PDF or DOC file only.'); return; }
+            var validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/bmp'];
+            if (validTypes.indexOf(file.type) === -1) { alert('Please upload a PDF, DOC, or an image (JPG/PNG/GIF/WebP/BMP).'); return; }
             if (file.size > 5 * 1024 * 1024) { alert('File size must be under 5MB.'); return; }
             var submitBtn = document.getElementById('draftSubmitBtn');
             submitBtn.textContent = 'Submitting...';
             submitBtn.disabled = true;
-            var formData = new FormData();
-            formData.append('customer_id', customerId);
-            formData.append('name', customerName);
-            formData.append('phone', customerPhone);
-            formData.append('email', customerEmail);
-            formData.append('city', customerCity);
-            formData.append('plan', selectedPlan);
-            formData.append('draft_file', file);
-            formData.append('has_own_draft', 'yes');
-            if (SCRIPT_URL === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-                setTimeout(function() {
+            fsFileToBase64(file, function (res) {
+                var formData = new FormData();
+                formData.append('customer_id', customerId);
+                formData.append('name', customerName);
+                formData.append('phone', customerPhone);
+                formData.append('email', customerEmail);
+                formData.append('city', customerCity);
+                formData.append('plan', selectedPlan);
+                if (res && res.base64) {
+                    formData.append('draft_file_base64', res.base64);
+                    formData.append('draft_file_name', file.name);
+                    formData.append('draft_mime', res.mime || file.type);
+                }
+                formData.append('draft_file', file); // fallback
+                formData.append('has_own_draft', 'yes');
+                fsEnrich(formData, null, fsRentalTotalFrom(document.getElementById('rentalForm')), 'pending');
+                if (SCRIPT_URL === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                    setTimeout(function() {
+                        document.getElementById('draftChoiceSection').style.display = 'none';
+                        document.getElementById('rentalDetailsForm').style.display = 'none';
+                        document.getElementById('successCustomerId').textContent = customerId;
+                        document.getElementById('successBox').querySelector('h2').textContent = 'Draft Uploaded Successfully!';
+                        document.getElementById('successBox').querySelector('p').innerHTML = 'Thank you! Your draft has been received.';
+                        document.getElementById('successBox').style.display = 'block';
+                        showPaymentBreakdown();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 800);
+                    return;
+                }
+                fsPost(formData).then(function() {
                     document.getElementById('draftChoiceSection').style.display = 'none';
                     document.getElementById('rentalDetailsForm').style.display = 'none';
                     document.getElementById('successCustomerId').textContent = customerId;
@@ -1288,22 +1310,11 @@
                     document.getElementById('successBox').style.display = 'block';
                     showPaymentBreakdown();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 800);
-                return;
-            }
-            fetch(SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' }).then(function() {
-                document.getElementById('draftChoiceSection').style.display = 'none';
-                document.getElementById('rentalDetailsForm').style.display = 'none';
-                document.getElementById('successCustomerId').textContent = customerId;
-                document.getElementById('successBox').querySelector('h2').textContent = 'Draft Uploaded Successfully!';
-                document.getElementById('successBox').querySelector('p').innerHTML = 'Thank you! Your draft has been received.';
-                document.getElementById('successBox').style.display = 'block';
-                showPaymentBreakdown();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }).catch(function() {
-                alert('Something went wrong. Please try again.');
-                submitBtn.textContent = 'Upload Draft';
-                submitBtn.disabled = false;
+                }).catch(function() {
+                    alert('Something went wrong. Please try again.');
+                    submitBtn.textContent = 'Upload Draft';
+                    submitBtn.disabled = false;
+                });
             });
         }
         function submitDetails(e) {
@@ -1320,6 +1331,7 @@
             data.append('city', customerCity);
             data.append('plan', selectedPlan);
             data.append('has_own_draft', 'no');
+            fsEnrich(data, null, fsRentalTotalFrom(form), 'pending');
             if (SCRIPT_URL === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
                 setTimeout(function () {
                     form.style.display = 'none';
@@ -1334,7 +1346,7 @@
                 }, 1200);
                 return;
             }
-            fetch(SCRIPT_URL, { method: 'POST', body: data, mode: 'no-cors' }).then(function () {
+            fsPost(data).then(function () {
                 form.style.display = 'none';
                 document.getElementById('draftChoiceSection').style.display = 'none';
                 // Only the payment breakdown is shown after a successful submission

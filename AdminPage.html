@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <title>FairStay — Backend Admin</title>
+  <style>
+    body { font-family: Arial, sans-serif; color: #18312b; margin: 24px; background: #f7faf8; }
+    h1 { color: #116b4c; margin-top: 0; }
+    h2 { color: #0b4a34; margin-top: 28px; }
+    .card { background: #fff; border-radius: 12px; padding: 18px 22px; margin: 12px 0; box-shadow: 0 6px 18px #1b43320d; }
+    .btn { background: #116b4c; color: #fff; border: 0; padding: 10px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; margin-right: 8px; }
+    .btn.alt { background: #fff; color: #116b4c; border: 1px solid #bad5cb; }
+    .btn.yellow { background: #e3a52d; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    input, select { padding: 9px; border: 1px solid #bad5cb; border-radius: 6px; font-size: 14px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .chip { background: #d9f2e6; color: #116b4c; padding: 4px 10px; border-radius: 12px; font-size: 12px; }
+    .msg { margin-top: 8px; font-size: 13px; color: #536b64; }
+    .err { color: #b91c1c; }
+  </style>
+</head>
+<body>
+  <h1>FairStay — Backend Admin</h1>
+  <div class="card">
+    <b>Connected spreadsheet:</b> <span id="sheetId">…</span>
+    <div class="msg" id="statusMsg"></div>
+  </div>
+
+  <h2>Quick actions</h2>
+  <div class="card">
+    <button class="btn alt" onclick="initSheets()">1️⃣ Initialize all sheets</button>
+    <button class="btn alt" onclick="refreshReport()">2️⃣ Refresh report</button>
+    <div class="msg">Run “Initialize” once (creates Leads + every service tab + Report), then submit a lead, then click “Refresh report”.</div>
+  </div>
+
+  <h2>Update a lead's status</h2>
+  <div class="card">
+    <div class="grid">
+      <div><input type="text" id="cid" placeholder="Customer ID (e.g. FS1A2B3C4D)"></div>
+      <div><input type="text" id="amt" placeholder="Payment Amount (₹) – optional"></div>
+      <div>
+        <select id="stat">
+          <option value="Success">✅ Mark as Paid → Success</option>
+          <option value="Pending">⏳ Mark as Pending</option>
+          <option value="Rejected">❌ Mark as Rejected</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn yellow" onclick="updateStatus()">Update status</button>
+    <div class="msg" id="updMsg"></div>
+  </div>
+
+  <h2>Sheets in this spreadsheet</h2>
+  <div class="card" id="sheets">
+    <div class="msg">loading…</div>
+  </div>
+
+  <script>
+    function showMsg(id, msg, err) {
+      var el = document.getElementById(id);
+      el.textContent = msg;
+      el.className = 'msg' + (err ? ' err' : '');
+      setTimeout(function () { el.textContent = ''; }, 6000);
+    }
+    function init() {
+      google.script.run
+        .withSuccessHandler(function (info) {
+          document.getElementById('sheetId').textContent = info.spreadsheet_id || '(set in Script properties)';
+          var box = document.getElementById('sheets');
+          box.innerHTML = info.sheets.map(function (n) {
+            return '<span class="chip">' + n + '</span>';
+          }).join('') || '<div class="msg">no sheets</div>';
+        })
+        .withFailureHandler(function (e) { showMsg('statusMsg', 'Could not read spreadsheet: ' + (e.message || e), true); })
+        .getAdminInfo();
+    }
+    function initSheets() {
+      showMsg('statusMsg', 'Initializing sheets…');
+      google.script.run
+        .withSuccessHandler(function (r) { showMsg('statusMsg', 'Initialized. Sheets: ' + (r.sheets || []).join(', ')); init(); })
+        .withFailureHandler(function (e) { showMsg('statusMsg', 'Error: ' + (e.message || e), true); })
+        .initializeSheets();
+    }
+    function refreshReport() {
+      showMsg('statusMsg', 'Refreshing report…');
+      google.script.run
+        .withSuccessHandler(function (r) { showMsg('statusMsg', 'Report refreshed: ' + r.months + ' months of data.'); })
+        .withFailureHandler(function (e) { showMsg('statusMsg', 'Error: ' + (e.message || e), true); })
+        .webRefreshReport();
+    }
+    function updateStatus() {
+      var cid = document.getElementById('cid').value.trim();
+      if (!cid) return showMsg('updMsg', 'Please enter a Customer ID.', true);
+      google.script.run
+        .withSuccessHandler(function (r) { showMsg('updMsg', 'Updated ' + r.customer_id + ' → ' + r.status); })
+        .withFailureHandler(function (e) { showMsg('updMsg', 'Error: ' + (e.message || e), true); })
+        .markLeadStatus(cid, document.getElementById('stat').value, document.getElementById('amt').value);
+    }
+    init();
+  </script>
+</body>
+</html>

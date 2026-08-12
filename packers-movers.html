@@ -1017,6 +1017,7 @@
             }
         }
     </style>
+<script src="fs-tracker.js?v=2"></script>
 </head>
 
 <body>
@@ -1505,7 +1506,7 @@
 
     <!-- Interactive Script Logic -->
     <script>
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpM2BZt_HoKPa9nwiQZnyZcNqqc7QkletgmHttC6Bopcg9MEuuwgSpvEIAkw4dV9uoXA/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxl9qoNVHnBDyan_k1-8tv1Z9r3zd-AJLCo6IOWvctUSDl83IzPlsQMLwHGcnr9W8vO/exec';
 
         // Tab Switching Logic
         function switchTab(btn, type) {
@@ -1568,12 +1569,9 @@
             const reqId = 'PM-' + Date.now().toString(36).toUpperCase().slice(-6);
             formData.append('request_id', reqId);
             formData.append('service_type', 'Packers & Movers (' + formData.get('move_category') + ')');
+            fsEnrich(formData, 'Packers & Movers', 0, 'pending');
 
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors'
-            }).then(() => {
+            fsPost(formData).then(() => {
                 showSuccess(reqId);
             }).catch(() => {
                 showSuccess(reqId);

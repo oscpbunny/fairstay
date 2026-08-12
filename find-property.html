@@ -668,6 +668,7 @@
             }
         }
     </style>
+<script src="fs-tracker.js?v=2"></script>
 </head>
 
 <body>
@@ -979,7 +980,7 @@
     </footer>
 
     <script>
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpM2BZt_HoKPa9nwiQZnyZcNqqc7QkletgmHttC6Bopcg9MEuuwgSpvEIAkw4dV9uoXA/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxl9qoNVHnBDyan_k1-8tv1Z9r3zd-AJLCo6IOWvctUSDl83IzPlsQMLwHGcnr9W8vO/exec';
 
         // Purpose tab switching
         function setPurpose(btn, purpose) {
@@ -1018,12 +1019,9 @@
             const reqId = 'FP-' + Date.now().toString(36).toUpperCase().slice(-6);
             formData.append('request_id', reqId);
             formData.append('service_type', 'Find a Property');
+            fsEnrich(formData, 'Find Property', 0, 'pending');
 
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors'
-            }).catch(() => {});
+            fsPost(formData).catch(() => {});
 
             // Scroll to listings and clear search form
             document.getElementById('searchForm').reset();
@@ -1053,12 +1051,9 @@
             const reqId = 'FP-' + Date.now().toString(36).toUpperCase().slice(-6);
             formData.append('request_id', reqId);
             formData.append('service_type', 'Property Requirement (' + formData.get('interest') + ')');
+            fsEnrich(formData, 'Find Property', 0, 'pending');
 
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors'
-            }).then(() => {
+            fsPost(formData).then(() => {
                 showInquirySuccess(reqId);
             }).catch(() => {
                 showInquirySuccess(reqId);

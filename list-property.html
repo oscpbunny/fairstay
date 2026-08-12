@@ -414,6 +414,7 @@
             }
         }
     </style>
+<script src="fs-tracker.js?v=2"></script>
 </head>
 
 <body>
@@ -669,7 +670,7 @@
     </footer>
 
     <script>
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpM2BZt_HoKPa9nwiQZnyZcNqqc7QkletgmHttC6Bopcg9MEuuwgSpvEIAkw4dV9uoXA/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxl9qoNVHnBDyan_k1-8tv1Z9r3zd-AJLCo6IOWvctUSDl83IzPlsQMLwHGcnr9W8vO/exec';
 
         // Continue button: validate step 1 then show owner step
         function goToOwnerStep() {
@@ -710,12 +711,9 @@
             formData.append('amenities', amenities);
             formData.append('request_id', reqId);
             formData.append('service_type', 'List Your Property (' + formData.get('listing_type') + ')');
+            fsEnrich(formData, 'List Property', 0, 'pending');
 
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors'
-            }).then(() => {
+            fsPost(formData).then(() => {
                 showSuccess(reqId);
             }).catch(() => {
                 showSuccess(reqId);
