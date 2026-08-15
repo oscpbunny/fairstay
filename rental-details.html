@@ -1227,7 +1227,7 @@
             </div>
 
             <div class="price-item">
-                <div class="pb-left">Pack Charges <span class="pb-hint" id="pbPlan">(Standard Plan)</span></div>
+                <div class="pb-left">Plan Charges <span class="pb-hint" id="pbPlan">(Standard Plan)</span></div>
                 <div class="pb-right" id="pbPlan">₹149</div>
             </div>
 
@@ -1246,7 +1246,7 @@
                         </button>
                         </div>
 
-            <p class="pb-note">* Processing charges of ₹399 and plan pack charges are fixed. Stamp paper charges are calculated at 0.5% of the agreement value (Rent × 11 months + Deposit), subject to a maximum stamp paper value of ₹500. Final stamp duty may vary as per government rules.</p>
+            <p class="pb-note">* Processing charges of ₹399 and plan plan charges are fixed. Stamp paper charges are calculated at 0.5% of the agreement value (Rent × 11 months + Deposit), subject to a maximum stamp paper value of ₹500. Final stamp duty may vary as per government rules.</p>
         </div>
     </div><!-- /form-wrap -->
 
@@ -1344,11 +1344,11 @@
         var AGREEMENT_MONTHS = 11;
         var STAMP_PERCENT = 0.5; // percent of agreement value
         var MAX_STAMP = 500; // maximum stamp duty cap in INR, applied when 0.5% computes above it
-        var PACK_PRICES = { standard: 149, premium: 249, luxury: 399 };
+        var Plan_PRICES = { standard: 149, premium: 249, luxury: 399 };
 
-        function getPackCharge() {
+        function getPlanCharge() {
             var p = (selectedPlan || '').toLowerCase();
-            return PACK_PRICES[p] || PACK_PRICES.standard;
+            return Plan_PRICES[p] || Plan_PRICES.standard;
         }
 
         function fmtINR(n) {
@@ -1365,13 +1365,13 @@
             var value = rent * AGREEMENT_MONTHS + dep;
             var rawStamp = value * (STAMP_PERCENT / 100);
             var stamp = Math.min(rawStamp, MAX_STAMP);
-            var pack = getPackCharge();
-            var total = PROCESSING_CHARGE + stamp + pack;
+            var Plan = getPlanCharge();
+            var total = PROCESSING_CHARGE + stamp + Plan;
 
             document.getElementById('pbProcessing').textContent = fmtINR(PROCESSING_CHARGE);
             document.getElementById('pbStamp').textContent = fmtINR(stamp);
             document.getElementById('pbPlan').textContent = '(' + (selectedPlan || 'Standard') + ' Plan)';
-            document.getElementById('pbPlan').textContent = fmtINR(pack);
+            document.getElementById('pbPlan').textContent = fmtINR(Plan);
             document.getElementById('pbTotal').textContent = fmtINR(total);
 
             document.getElementById('calcDetail').innerHTML = 'Formula: (' +
