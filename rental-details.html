@@ -1228,7 +1228,7 @@
 
             <div class="price-item">
                 <div class="pb-left">Pack Charges <span class="pb-hint" id="pbPlan">(Standard Plan)</span></div>
-                <div class="pb-right" id="pbPack">₹149</div>
+                <div class="pb-right" id="pbPlan">₹149</div>
             </div>
 
             <div class="price-item total">
@@ -1371,7 +1371,7 @@
             document.getElementById('pbProcessing').textContent = fmtINR(PROCESSING_CHARGE);
             document.getElementById('pbStamp').textContent = fmtINR(stamp);
             document.getElementById('pbPlan').textContent = '(' + (selectedPlan || 'Standard') + ' Plan)';
-            document.getElementById('pbPack').textContent = fmtINR(pack);
+            document.getElementById('pbPlan').textContent = fmtINR(pack);
             document.getElementById('pbTotal').textContent = fmtINR(total);
 
             document.getElementById('calcDetail').innerHTML = 'Formula: (' +
