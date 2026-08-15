@@ -1227,7 +1227,7 @@
             </div>
 
             <div class="price-item">
-                <div class="pb-left">Plan Charges <span class="pb-hint" id="pbPlan">(Standard Plan)</span></div>
+                <div class="pb-left">Plan Charges <span class="pb-hint" id="pbPlanName">(Standard Plan)</span></div>
                 <div class="pb-right" id="pbPlan">₹149</div>
             </div>
 
@@ -1622,6 +1622,244 @@
                 btn.disabled = false;
             });
         }
+        fsPost(data).then(showDetailsSuccess).catch(function () {
+    alert('Something went wrong. Please try again.');
+    btn.textContent = 'Submit Rental Details';
+    btn.disabled = false;
+});
+
+
+/* =========================
+   RAZORPAY PAYMENT
+   ========================= */
+
+function startRazorpayPayment() {
+
+    var payBtn = document.getElementById('razorpayPayBtn');
+
+    if (!payBtn) {
+        alert('Payment button not found.');
+        return;
+    }
+
+    payBtn.disabled = true;
+    payBtn.textContent = 'Creating Payment...';
+
+    // Get current payment values
+    updatePaymentBreakdown();
+
+    var rent = parseFloat(document.getElementById('calcRent').value) || 0;
+    var deposit = parseFloat(document.getElementById('calcDeposit').value) || 0;
+
+    var stampValue = Math.min(
+        (rent * AGREEMENT_MONTHS + deposit) * (STAMP_PERCENT / 100),
+        MAX_STAMP
+    );
+
+    var planCharge = getPlanCharge();
+
+    var totalAmount =
+        PROCESSING_CHARGE +
+        stampValue +
+        planCharge;
+
+    totalAmount = Math.round(totalAmount);
+
+    if (totalAmount <= 0) {
+        alert('Invalid payment amount.');
+        payBtn.disabled = false;
+        payBtn.textContent = 'Pay ' + fmtINR(totalAmount);
+        return;
+    }
+
+    payBtn.textContent = 'Creating Order...';
+
+    var orderData = new FormData();
+
+    orderData.append('action', 'create_razorpay_order');
+    orderData.append('payment_amount', totalAmount);
+    orderData.append(
+        'receipt',
+        customerId || ('FS_' + Date.now())
+    );
+
+    orderData.append(
+        'notes',
+        JSON.stringify({
+            customer_id: customerId,
+            customer_name: customerName,
+            customer_phone: customerPhone,
+            customer_email: customerEmail,
+            plan: selectedPlan,
+            service: 'Rental Agreement'
+        })
+    );
+
+    fsPost(orderData)
+        .then(function (order) {
+
+            console.log('Razorpay order:', order);
+
+            if (!order || !order.id) {
+                throw new Error('Razorpay order ID was not returned.');
+            }
+
+            openRazorpayCheckout(order, totalAmount);
+
+        })
+        .catch(function (error) {
+
+            console.error(error);
+
+            alert(
+                'Unable to create Razorpay payment order. Please try again.'
+            );
+
+            payBtn.disabled = false;
+            payBtn.textContent = 'Pay ' + fmtINR(totalAmount);
+        });
+}
+
+
+function openRazorpayCheckout(order, totalAmount) {
+
+    var payBtn = document.getElementById('razorpayPayBtn');
+
+    var options = {
+
+        key: 'rzp_live_TPDYBoXlHTKs8g',
+
+        amount: order.amount,
+
+        currency: 'INR',
+
+        name: 'FairStay.co.in',
+
+        description: 'Rental Agreement - ' +
+            (selectedPlan || 'Standard') + ' Plan',
+
+        order_id: order.id,
+
+        prefill: {
+            name: customerName,
+            email: customerEmail,
+            contact: customerPhone
+        },
+
+        notes: {
+            customer_id: customerId,
+            plan: selectedPlan,
+            service: 'Rental Agreement'
+        },
+
+        theme: {
+            color: '#116b4c'
+        },
+
+        handler: function (response) {
+
+            payBtn.textContent = 'Verifying Payment...';
+
+            verifyRazorpayPayment(response, totalAmount);
+        },
+
+        modal: {
+            ondismiss: function () {
+
+                payBtn.disabled = false;
+                payBtn.textContent =
+                    'Pay ' + fmtINR(totalAmount);
+            }
+        }
+    };
+
+    var rzp = new Razorpay(options);
+
+    rzp.on('payment.failed', function (response) {
+
+        console.error('Payment failed:', response);
+
+        alert(
+            'Payment failed. Please try again.'
+        );
+
+        payBtn.disabled = false;
+        payBtn.textContent =
+            'Pay ' + fmtINR(totalAmount);
+    });
+
+    rzp.open();
+}
+
+
+function verifyRazorpayPayment(response, totalAmount) {
+
+    var payBtn = document.getElementById('razorpayPayBtn');
+
+    var verifyData = new FormData();
+
+    verifyData.append(
+        'action',
+        'verify_razorpay_payment'
+    );
+
+    verifyData.append(
+        'order_id',
+        response.razorpay_order_id
+    );
+
+    verifyData.append(
+        'payment_id',
+        response.razorpay_payment_id
+    );
+
+    verifyData.append(
+        'razorpay_signature',
+        response.razorpay_signature
+    );
+
+    verifyData.append(
+        'customer_id',
+        customerId
+    );
+
+    verifyData.append(
+        'payment_amount',
+        totalAmount
+    );
+
+    fsPost(verifyData)
+        .then(function (result) {
+
+            console.log(
+                'Payment verification result:',
+                result
+            );
+
+            alert(
+                '✅ Payment successful!\n\n' +
+                'Payment ID: ' +
+                response.razorpay_payment_id
+            );
+
+            payBtn.textContent = 'Payment Successful ✓';
+            payBtn.disabled = true;
+
+        })
+        .catch(function (error) {
+
+            console.error(error);
+
+            alert(
+                'Payment was received, but verification failed. ' +
+                'Please contact FairStay support.'
+            );
+
+            payBtn.disabled = false;
+            payBtn.textContent =
+                'Verify Payment';
+        });
+}
     </script>
 </body>
 
