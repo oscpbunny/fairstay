@@ -1,4 +1,5 @@
-﻿<!doctype html>
+
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -1712,8 +1713,8 @@ function startRazorpayPayment() {
             console.error(error);
 
             alert(
-                'Unable to create Razorpay payment order. Please try again.'
-            );
+    'Razorpay Error:\n\n' + (error && error.message ? error.message : error)
+);
 
             payBtn.disabled = false;
             payBtn.textContent = 'Pay ' + fmtINR(totalAmount);
