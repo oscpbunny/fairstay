@@ -114,7 +114,15 @@ function fsPost(formData) {
   if (!url || url === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
     return Promise.resolve({ _demo: true });
   }
-  return fetch(url, { method: 'POST', body: formData, mode: 'no-cors' });
+  return fetch(url, {
+    method: 'POST',
+    body: formData
+}).then(function (response) {
+    if (!response.ok) {
+        throw new Error('Apps Script request failed: HTTP ' + response.status);
+    }
+    return response.json();
+});
 }
 
 /**
