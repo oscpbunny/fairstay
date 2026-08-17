@@ -1623,13 +1623,7 @@
                 btn.disabled = false;
             });
         }
-        fsPost(data).then(showDetailsSuccess).catch(function () {
-    alert('Something went wrong. Please try again.');
-    btn.textContent = 'Submit Rental Details';
-    btn.disabled = false;
-});
-
-
+    
 /* =========================
    RAZORPAY PAYMENT
    ========================= */
@@ -1759,11 +1753,70 @@ function openRazorpayCheckout(order, totalAmount) {
 
         handler: function (response) {
 
-            payBtn.textContent = 'Verifying Payment...';
+    payBtn.textContent = 'Verifying Payment...';
+    payBtn.disabled = true;
 
-            verifyRazorpayPayment(response, totalAmount);
-        },
+    var verifyData = new URLSearchParams();
 
+    verifyData.append('action', 'verify_razorpay_payment');
+    verifyData.append('order_id', response.razorpay_order_id);
+    verifyData.append('payment_id', response.razorpay_payment_id);
+    verifyData.append('razorpay_signature', response.razorpay_signature);
+
+    fsPost(verifyData.toString())
+        .then(function (result) {
+
+            console.log('Razorpay verification result:', result);
+
+            if (!result || result.result !== 'success') {
+                throw new Error(
+                    result && result.error
+                        ? result.error
+                        : 'Payment verification failed.'
+                );
+            }
+
+            // Payment verified successfully
+            console.log('Payment verified successfully');
+
+            // Now update the existing lead/customer row
+            var markPaidData = new URLSearchParams();
+
+            markPaidData.append('action', 'mark_paid');
+            markPaidData.append('customer_id', customerId);
+            markPaidData.append('payment_amount', totalAmount);
+
+            return fsPost(markPaidData.toString());
+        })
+        .then(function (markResult) {
+
+            console.log('Payment status update:', markResult);
+
+            payBtn.textContent = 'Payment Successful ✓';
+            payBtn.disabled = true;
+
+            alert(
+                'Payment successful!\n\n' +
+                'Payment ID: ' +
+                response.razorpay_payment_id
+            );
+
+        })
+        .catch(function (error) {
+
+            console.error('Payment verification/update error:', error);
+
+            alert(
+                'Payment was received, but we could not update the booking status automatically.\n\n' +
+                'Payment ID: ' +
+                response.razorpay_payment_id
+            );
+
+            payBtn.disabled = false;
+            payBtn.textContent = 'Pay ' + fmtINR(totalAmount);
+         }
+    );
+},
         modal: {
             ondismiss: function () {
 
